@@ -2,7 +2,7 @@
   lang="ts"
   context="module"
 >
-  const geometry = new SphereGeometry(1)
+  const geometry = new SphereGeometry(1, 8, 4)
   const material = new MeshBasicMaterial({ color: '#339933' })
 </script>
 
@@ -10,7 +10,7 @@
   import { T } from '@threlte/core'
 	import { HTML } from '@threlte/extras'
   import { Attractor, Collider, RigidBody } from '@threlte/rapier'
-  import { BoxGeometry, MeshBasicMaterial, MeshStandardMaterial, SphereGeometry, Vector3 } from 'three'
+  import { MeshBasicMaterial, SphereGeometry, Vector3 } from 'three'
 
 	export let range: number = 10
 	export let position: [number, number, number] = [0, 0, 0]
@@ -48,7 +48,7 @@
 
 	}
 
-  $: bodies = generateBodies(3)
+  $: bodies = generateBodies(2)
 </script>
 
 <HTML

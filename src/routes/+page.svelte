@@ -9,6 +9,9 @@
 		<span>{model.title}</span>
 	{/each}
   <App />
+	<canvas>
+
+	</canvas>
 </div>
 
 <style>
