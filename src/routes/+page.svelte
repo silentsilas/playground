@@ -1,5 +1,5 @@
 <script lang="ts">
-  import App from '$lib/components/App.svelte'
+	import Home from '$lib/components/scenes/home/Home.svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 </script>
@@ -8,10 +8,7 @@
 	{#each data.models as model}
 		<span>{model.title}</span>
 	{/each}
-  <App />
-	<canvas>
-
-	</canvas>
+  <Home />
 </div>
 
 <style>

@@ -17,7 +17,9 @@
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@theatre/core": "^0.7.1",
     "@theatre/studio": "^0.7.1",
+    "@threlte/theatre": "^2.1.7",
     "@types/eslint": "^8.56.0",
     "@types/three": "^0.159.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -40,11 +42,9 @@
   "type": "module",
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.11.2",
-    "@theatre/core": "^0.7.1",
     "@threlte/core": "^7.3.0",
     "@threlte/extras": "^8.11.2",
     "@threlte/rapier": "^2.0.0",
-    "@threlte/theatre": "^2.1.7",
     "three": "^0.159.0",
     "three-inspect": "^0.4.5"
   }
