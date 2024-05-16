@@ -5,7 +5,7 @@
 	import { Studio } from '@threlte/theatre';
 </script>
 
-<Studio enabled={false} />
+<Studio enabled={dev} />
 
 <Canvas>
 	<Spinners />

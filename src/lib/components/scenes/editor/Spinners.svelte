@@ -8,18 +8,18 @@
 
 	let sequence: SequenceController;
 
-	let box: Mesh;
+	let ball: Mesh;
 	let spotlight: SpotLight;
-	let lastBoxPosition = new Vector3();
-	let currentBoxPosition = new Vector3();
+	let lastBallPosition = new Vector3();
+	let currentBallPosition = new Vector3();
 	let config = spinnersJson as IProjectConfig;
 
-	const boxMoved: any = (props: { position: { x: number; y: number; z: number } }) => {
-		if (box && spotlight) {
+	const ballMoved: any = (props: { position: { x: number; y: number; z: number } }) => {
+		if (ball && spotlight) {
 			const { x, y, z } = props.position;
-			currentBoxPosition.set(x, y, z);
-			spotlight.lookAt(currentBoxPosition);
-			lastBoxPosition.copy(currentBoxPosition);
+			currentBallPosition.set(x, y, z);
+			spotlight.lookAt(currentBallPosition);
+			lastBallPosition.copy(currentBallPosition);
 		}
 	};
 </script>
@@ -33,10 +33,10 @@
 		<!-- create a T.SpotLight that looks at box-->
 		<T.SpotLight position={[0, 5, 3]} intensity={10} bind:ref={spotlight}></T.SpotLight>
 
-		<SheetObject key="Box" let:Transform let:Sync on:change={boxMoved}>
+		<SheetObject key="Box" let:Transform let:Sync on:change={ballMoved}>
 			<Transform>
-				<T.Mesh position.y={0.5} bind:ref={box}>
-					<T.BoxGeometry args={[1, 1, 1]} />
+				<T.Mesh position.y={0.5} bind:ref={ball}>
+					<T.SphereGeometry args={[1, 8, 4]} />
 					<T.MeshStandardMaterial color="#b00d03">
 						<Sync color roughness metalness />
 					</T.MeshStandardMaterial>
