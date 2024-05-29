@@ -1,13 +1,12 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2017-10-10 00:00:00 +0000
 tags:
-- Wisdom
-- Speech
-- Verbal Abuse
+  - Wisdom
+  - Speech
+  - Verbal Abuse
 title: Unintentional Internalization
-
 ---
 
 Our skin's as thick
@@ -29,4 +28,3 @@ For each one we've endured,
 We've dealt so many more
 For the most innocuous remark
 Still can pierce like a sword.
-

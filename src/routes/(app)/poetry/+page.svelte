@@ -1,39 +1,70 @@
 <script lang="ts">
-	import MenuItem from '$lib/components/scenes/app/MenuItem.svelte';
-	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import type { PageData } from '../poetry/$types';
 	export let data: PageData;
 
-	const xMin = -2.5,
-		xMax = 2.5;
-	const yMin = -7.5,
-		yMax = 7.5;
-	const zMin = -2.5,
-		zMax = 2.5;
-
-	// Calculate positions
-	const calculatePositions = (numPosts: number): Array<[number, number, number]> => {
-		const positions: Array<[number, number, number]> = [];
-		const numRows = Math.ceil(Math.sqrt(numPosts));
-		const numCols = Math.ceil(numPosts / numRows);
-
-		for (let i = 0; i < numPosts; i++) {
-			const row = Math.floor(i / numCols);
-			const col = i % numCols;
-
-			const x = xMin + (xMax - xMin) * (col / (numCols - 1));
-			const y = yMin + (yMax - yMin) * (row / (numRows - 1));
-			const z = zMin;
-
-			positions.push([x, y, z]);
-		}
-
-		return positions;
+	const formatDate = (date: string) => {
+		return new Date(date).toLocaleDateString(undefined, {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		});
 	};
 
-	// Generate positions based on the number of posts
-	const positions = calculatePositions(data.posts.length);
+	let { posts, total } = data;
+	const limit = 8;
+
+	let currentPage = Number($page.url.searchParams.get('page')) || 1;
+	let totalPages = Math.ceil(total / limit);
+	$: $page.url.searchParams.get('page'),
+		(currentPage = Number($page.url.searchParams.get('page')) || 1);
+
+	async function fetchData(page: number) {
+		const response = await fetch(`/api/poetry?limit=${limit}&page=${page}`);
+		const newData = await response.json();
+		currentPage = page;
+		posts = newData.posts;
+		total = newData.total;
+		totalPages = Math.ceil(total / limit);
+	}
+
+	function navigate(page: number) {
+		fetchData(page);
+		goto(`/poetry/?page=${page}`, { replaceState: true });
+	}
 </script>
 
-{#each data.posts as post, i}
-	<MenuItem position={positions[i]} htmlContent={post.meta.title} href={post.path} />
-{/each}
+<div class="container mx-auto flex flex-col items-center py-10">
+	<div class="prose">
+		<h1 class="py-6">Poetry</h1>
+	</div>
+
+	<ul>
+		{#each posts as post}
+			<li class="py-4">
+				<h3 class="pb-1">
+					<a class="link" href={post.path}>
+						{post.meta.title}
+					</a>
+				</h3>
+				<p class="text-sm">{formatDate(post.meta.date)}</p>
+			</li>
+		{/each}
+	</ul>
+</div>
+{#if total > 1}
+	<nav class="join justify-end">
+		<button
+			class="join-item btn-primary btn btn-outline"
+			on:click={() => navigate(currentPage - 1)}
+			disabled={currentPage === 1}>Prev</button
+		>
+		<button class="join-item btn btn-outline">{currentPage} of {totalPages}</button>
+		<button
+			class="join-item btn btn-primary btn-outline"
+			on:click={() => navigate(currentPage + 1)}
+			disabled={currentPage === totalPages}>Next</button
+		>
+	</nav>
+{/if}

@@ -1,14 +1,14 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2018-04-28 12:00:00 +0000
 tags:
-- Wisdom
-- Lessons
+  - Wisdom
+  - Lessons
 title: I've Seen
 year: 2018
-
 ---
+
 I've seen tears fall
 From the face of a giant,
 A hint of desperation

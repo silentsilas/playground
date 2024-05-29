@@ -13,6 +13,7 @@ export async function load({ params }) {
 		Content,
 		title,
 		date: validDate,
-		categories
+		categories,
+		post
 	};
 }

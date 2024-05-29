@@ -1,12 +1,11 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2016-12-20 00:00:00 +0000
 tags:
-- Introspective
-- Silence
+  - Introspective
+  - Silence
 title: Silent Silas
-
 ---
 
 The windows to my soul
@@ -24,4 +23,3 @@ But if it's any consolation,
 I am striving to get better
 At voicing my own thoughts
 Without resorting to writing letters.
-

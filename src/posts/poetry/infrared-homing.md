@@ -1,12 +1,12 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2019-02-02 12:00:00 +0000
 tags:
-- Love
-- Lovers
-- Relationships
-- Introspective
+  - Love
+  - Lovers
+  - Relationships
+  - Introspective
 title: Infrared Homing
 ---
 
@@ -40,4 +40,3 @@ A candle
 Can't replace it,
 But any fire
 Is better than none.
-

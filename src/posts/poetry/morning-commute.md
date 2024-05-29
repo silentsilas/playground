@@ -1,13 +1,12 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2016-05-10 00:00:00 +0000
 tags:
-- Work
-- Worry
-- Self-conscious
+  - Work
+  - Worry
+  - Self-conscious
 title: Morning Commute
-
 ---
 
 A few minutes into my morning commute
@@ -24,4 +23,3 @@ So I ditched the car and snuck into work,
 Though I knew my hopes and dreams would be seen
 Swirled amidst my self-doubt and worries
 Like creamer mixed in bitter cups of caffeine.
-

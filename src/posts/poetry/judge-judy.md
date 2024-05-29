@@ -1,12 +1,11 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2020-10-01 20:00:00 +0000
 tags:
-- Neuroscience
-- Wisdom
+  - Neuroscience
+  - Wisdom
 title: Judge Judy
-
 ---
 
 With each passing moment,
@@ -28,4 +27,3 @@ The neurons are dismissed
 Then return to jury duty
 For another microcosm case
 In their show of Judge Judy.
-

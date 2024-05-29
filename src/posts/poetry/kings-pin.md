@@ -1,10 +1,10 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2018-06-25 20:00:00 +0000
 tags:
-- Chess
-- Lessons
+  - Chess
+  - Lessons
 title: King's Pin
 year: 2018
 ---
@@ -24,4 +24,3 @@ Synonymous to beginner.
 
 A satisfying poach
 Awarded to the winner.
-

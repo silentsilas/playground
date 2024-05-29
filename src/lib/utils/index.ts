@@ -41,7 +41,7 @@ export const fetchMarkdownPosts = async (
 	section: SectionKey,
 	limit: number,
 	offset: number
-): Promise<Post[]> => {
+): Promise<{posts: Post[], total: number}> => {
 	let posts: Record<string, () => Promise<unknown>>;
 	switch (section) {
 		case 'poetry':
@@ -74,7 +74,9 @@ export const fetchMarkdownPosts = async (
 		})
 	);
 
-	const paginatedPosts = allPosts.slice(offset, offset + limit);
+	const sortedPosts = allPosts.sort((a, b) => new Date(a.meta.date).getTime() - new Date(b.meta.date).getTime() );
 
-	return paginatedPosts;
+	const paginatedPosts = sortedPosts.slice(offset, offset + limit);
+
+	return {posts: paginatedPosts, total: allPosts.length};
 };

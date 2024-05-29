@@ -1,19 +1,16 @@
 <script lang="ts">
-	import MenuItem from '$lib/components/scenes/app/MenuItem.svelte';
 	import type { PageData } from './$types';
-	import DomPortal from '$lib/utils/DomPortal.svelte';
 	export let data: PageData;
 
 	const { title, date: _date, Content, categories: _ } = data;
 </script>
 
-<MenuItem position={[-2.5, 10, 0]} htmlContent="Back" href="/poetry" />
-
-<DomPortal target="#overlay">
-	<div class="py-4">
-		<h1 class="text-xl font-medium text-black pb-2">{title}</h1>
-		<div>
-			<Content />
-		</div>
+<div class="container mx-auto flex flex-col items-center py-10">
+	<div class="prose">
+		<h1 class="py-6">{title}</h1>
 	</div>
-</DomPortal>
+	<div class="prose">
+		<Content />
+	</div>
+	<a href="/poetry" class="link mt-10">Back to Poetry</a>
+</div>

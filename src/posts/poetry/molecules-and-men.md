@@ -1,9 +1,9 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2019-10-26 12:00:00 +0000
 tags:
-- Wisdom
+  - Wisdom
 title: Of Molecules And Men
 ---
 
@@ -49,4 +49,3 @@ To cease to be
 Is to become
 Every friend
 And alleged foe.
-

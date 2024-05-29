@@ -1,14 +1,13 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2015-07-15 00:00:00 +0000
 tags:
-- Relationships
-- Love
-- Drinking
-- Humor
+  - Relationships
+  - Love
+  - Drinking
+  - Humor
 title: Perfect Situation
-
 ---
 
 When I'm hammered,
@@ -32,5 +31,3 @@ And I speculate the odds
 Given a perfect situation
 In a parallel universe
 If I'd rise to the occasion.
-
-
