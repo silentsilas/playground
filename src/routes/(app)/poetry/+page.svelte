@@ -35,7 +35,7 @@
 	}
 </script>
 
-<div class="container mx-auto flex flex-col items-center py-10">
+<div class="container mx-auto flex flex-col items-center">
 	<div class="prose">
 		<h1 class="py-6">Poetry</h1>
 	</div>
@@ -54,7 +54,7 @@
 	</ul>
 </div>
 {#if total > 1}
-	<nav class="join justify-end">
+	<nav class="join justify-end py-10">
 		<button
 			class="join-item btn-primary btn btn-outline"
 			on:click={() => navigate(currentPage - 1)}

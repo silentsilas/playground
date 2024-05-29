@@ -1,3 +1,3 @@
-<p class="whitespace-pre">
+<p class="whitespace-pre-wrap">
 	<slot></slot>
 </p>

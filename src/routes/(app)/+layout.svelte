@@ -6,7 +6,7 @@
 	<div class="navbar bg-base-300 sticky top-0 z-50">
 		<div class="navbar-start">
 			<div class="dropdown">
-				<div tabindex="-1" class="btn btn-ghost lg:hidden">
+				<div tabindex="-1" class="btn btn-ghost text-primary lg:hidden">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-5 w-5"
@@ -33,7 +33,7 @@
 					<li><a href="/services">Services</a></li>
 				</ul>
 			</div>
-			<a class="btn btn-outline btn-primary text-xl" href="/">silentsilas</a>
+			<a class="link-primary text-xl" href="/">silentsilas</a>
 		</div>
 		<div class="navbar-end hidden lg:flex">
 			<ul class="menu menu-horizontal px-1">
