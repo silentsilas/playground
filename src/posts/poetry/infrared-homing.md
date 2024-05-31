@@ -8,6 +8,7 @@ tags:
   - Relationships
   - Introspective
 title: Infrared Homing
+layout: poetry
 ---
 
 In a moment

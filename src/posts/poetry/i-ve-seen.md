@@ -6,7 +6,7 @@ tags:
   - Wisdom
   - Lessons
 title: I've Seen
-year: 2018
+layout: poetry
 ---
 
 I've seen tears fall

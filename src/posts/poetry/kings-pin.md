@@ -6,7 +6,6 @@ tags:
   - Chess
   - Lessons
 title: King's Pin
-year: 2018
 ---
 
 You placed my king

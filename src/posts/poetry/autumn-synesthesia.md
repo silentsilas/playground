@@ -1,12 +1,13 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2014-11-10 00:00:00 +0000
 tags:
-- Fall
+  - Fall
 title: Autumn Synesthesia
-
+layout: poetry
 ---
+
 The trees branch out their reds and yellows.
 Their last battle cry before the frost.
 The further north, the more pronounced

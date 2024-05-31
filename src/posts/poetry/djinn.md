@@ -1,11 +1,10 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2019-03-06 12:00:00 +0000
 tags:
-- Christian
+  - Christian
 title: Djinn
-year: 2019
 layout: poetry
 ---
 
@@ -18,4 +17,3 @@ I let out a chuckle
 And a sigh of relief.
 "He didn't holy ghost us
 Despite such unbelief."
-

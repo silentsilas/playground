@@ -6,6 +6,7 @@ tags:
   - Humor
   - Muffins
 title: Breakfast Blues
+layout: poetry
 ---
 
 Lost my reason to wake in the morning

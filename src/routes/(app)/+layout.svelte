@@ -1,5 +1,21 @@
-<script>
+<script lang="ts">
 	import '../../app.css';
+	import { searchResults } from '$lib/store';
+	import type { SearchResult } from '$lib/utils/search';
+	import SearchResults from '$lib/components/SearchResults.svelte';
+
+	let searchQuery = '';
+
+	async function handleSearch() {
+		const response = await fetch(`/api/poetry/search?q=${encodeURIComponent(searchQuery)}`);
+		if (response.ok) {
+			const data: SearchResult[] = await response.json();
+			searchResults.set(data);
+		} else {
+			console.error('Failed to fetch search results');
+			searchResults.set([]);
+		}
+	}
 </script>
 
 <div class="flex flex-col h-screen">
@@ -35,7 +51,27 @@
 			</div>
 			<a class="link-primary text-xl" href="/">silentsilas</a>
 		</div>
+		<div class="navbar-end lg:hidden">
+			<div class="form-control">
+				<input
+					type="text"
+					placeholder="Search"
+					class="input input-bordered md:w-auto"
+					bind:value={searchQuery}
+					on:input={handleSearch}
+				/>
+			</div>
+		</div>
 		<div class="navbar-end hidden lg:flex">
+			<div class="form-control">
+				<input
+					type="text"
+					placeholder="Search"
+					class="input input-bordered md:w-auto"
+					bind:value={searchQuery}
+					on:input={handleSearch}
+				/>
+			</div>
 			<ul class="menu menu-horizontal px-1">
 				<li><a href="/thoughts">Thoughts</a></li>
 				<li><a href="/poetry">Poetry</a></li>
@@ -48,5 +84,6 @@
 
 	<div class="flex flex-col items-center flex-1 overflow-auto">
 		<slot />
+		<SearchResults />
 	</div>
 </div>

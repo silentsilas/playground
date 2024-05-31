@@ -1,15 +1,16 @@
 ---
 categories:
-- Poetry
+  - Poetry
 date: 2014-05-20 00:00:00 +0000
 tags:
-- Humor
-- Muffins
-- Love
-- Relationships
+  - Humor
+  - Muffins
+  - Love
+  - Relationships
 title: Breakfast Blue Pt. 2
-
+layout: poetry
 ---
+
 Oh, my good friend, I didn't mean to leave.
 It wasn't your fault, so no longer grieve!
 If I could, I would run back to your side.
