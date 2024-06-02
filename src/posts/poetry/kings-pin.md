@@ -6,6 +6,7 @@ tags:
   - Chess
   - Lessons
 title: King's Pin
+layout: poetry
 ---
 
 You placed my king

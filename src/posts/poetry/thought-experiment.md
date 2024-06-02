@@ -7,6 +7,7 @@ tags:
   - Relationships
   - Realtalk
 title: Thought Experiment
+layout: poetry
 ---
 
 Love is a free fall

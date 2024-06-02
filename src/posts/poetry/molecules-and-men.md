@@ -5,6 +5,7 @@ date: 2019-10-26 12:00:00 +0000
 tags:
   - Wisdom
 title: Of Molecules And Men
+layout: poetry
 ---
 
 May we lose

@@ -7,6 +7,7 @@ tags:
   - Speech
   - Verbal Abuse
 title: Unintentional Internalization
+layout: poetry
 ---
 
 Our skin's as thick

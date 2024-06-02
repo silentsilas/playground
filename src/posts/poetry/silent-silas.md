@@ -6,6 +6,7 @@ tags:
   - Introspective
   - Silence
 title: Silent Silas
+layout: poetry
 ---
 
 The windows to my soul

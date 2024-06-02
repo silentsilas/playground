@@ -8,6 +8,7 @@ tags:
   - Drinking
   - Humor
 title: Perfect Situation
+layout: poetry
 ---
 
 When I'm hammered,

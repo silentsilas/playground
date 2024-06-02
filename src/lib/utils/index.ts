@@ -3,7 +3,7 @@ export interface Metadata {
 	date: string;
 	content: string;
 	categories?: string[];
-	section?: SectionKey;
+	draft?: boolean;
 }
 
 export interface Section {
@@ -41,7 +41,7 @@ export const fetchMarkdownPosts = async (
 	section: SectionKey,
 	limit: number,
 	offset: number
-): Promise<{posts: Post[], total: number}> => {
+): Promise<{ posts: Post[]; total: number }> => {
 	let posts: Record<string, () => Promise<unknown>>;
 	switch (section) {
 		case 'poetry':
@@ -50,33 +50,51 @@ export const fetchMarkdownPosts = async (
 		case 'projects':
 			posts = import.meta.glob('/src/routes/(app)/projects/posts/*.md');
 			break;
-			case 'thoughts':
-				posts = import.meta.glob('/src/routes/(app)/thoughts/posts/*.md');
+		case 'thoughts':
+			posts = import.meta.glob('/src/posts/thoughts/*.md');
+			console.log(posts);
 			break;
 		default:
 			throw new Error('Could not find this section');
 	}
 	const iterablePostFiles = Object.entries(posts);
 
+	const postsWithErrors: string[] = [];
+
 	const allPosts = await Promise.all(
 		iterablePostFiles.map(async ([path, resolver]) => {
-			const data = await resolver();
-			if (isData(data)) {
-				const { metadata } = data;
-				const postPath = path.slice(11, -3);
-				return {
-					meta: { ...metadata, section: section },
-					path: postPath
-				};
-			} else {
-				throw new Error('Could not properly parse this post');
+			try {
+				const data = await resolver();
+				if (isData(data)) {
+					if (data.metadata.draft) {
+						return undefined;
+					}
+					const { metadata } = data;
+					const postPath = path.slice(11, -3);
+					return {
+						meta: { ...metadata },
+						path: postPath
+					};
+				} else {
+					console.error('Could not properly parse this post');
+					postsWithErrors.push(path);
+				}
+			} catch (error) {
+				console.error(`Error parsing post at ${path}: ${error}`);
+				postsWithErrors.push(path);
 			}
 		})
 	);
 
-	const sortedPosts = allPosts.sort((a, b) => new Date(a.meta.date).getTime() - new Date(b.meta.date).getTime() );
+	console.log('Files that could not be properly parsed:', postsWithErrors);
+
+	const sortedPosts: Post[] = allPosts
+		.filter((post): post is Post => post !== undefined)
+		.sort(
+			(b, a) => new Date(a?.meta.date || '').getTime() - new Date(b?.meta.date || '').getTime()
+		);
 
 	const paginatedPosts = sortedPosts.slice(offset, offset + limit);
 
-	return {posts: paginatedPosts, total: allPosts.length};
+	return { posts: paginatedPosts, total: allPosts.length };
 };

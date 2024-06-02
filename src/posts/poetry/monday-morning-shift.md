@@ -6,6 +6,7 @@ tags:
   - Grounds
   - Covenant
 title: Monday Morning Shift
+layout: poetry
 ---
 
 These plants look beautiful, but not at this location.

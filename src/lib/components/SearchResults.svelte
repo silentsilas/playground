@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { searchResults } from '$lib/store';
 	import type { SearchResult } from '$lib/utils/search';
+	import { onMount } from 'svelte';
 
 	let results: SearchResult[] = [];
 
@@ -15,6 +16,10 @@
 			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 			.join(' ');
 	}
+
+	onMount(() => {
+		searchResults.set([]);
+	});
 </script>
 
 {#if results.length > 0}
@@ -26,8 +31,8 @@
 			{#each results as result}
 				<li class="py-4">
 					<h3 class="pb-1">
-						<a class="link" href="/poetry/{result.poem.id}">{slugToTitle(result.poem.id)}</a>
-						<p class="text-sm">(Relevance: {(result.similarity * 100).toFixed(3)})%</p>
+						<a class="link" href={`/poetry/${result.poem.id}`}>{slugToTitle(result.poem.id)}</a>
+						<p class="text-sm">(Relevance: {(result.similarity * 100).toFixed(3)}%)</p>
 					</h3>
 				</li>
 			{/each}

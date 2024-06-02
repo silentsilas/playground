@@ -5,6 +5,7 @@ date: 2014-10-27 00:00:00 +0000
 tags:
   - Humor
 title: Klepto Couches
+layout: poetry
 ---
 
 My home houses countless couches.

@@ -7,7 +7,8 @@
 	let searchQuery = '';
 
 	async function handleSearch() {
-		const response = await fetch(`/api/poetry/search?q=${encodeURIComponent(searchQuery)}`);
+		const section = window.location.pathname.split('/')[1];
+		const response = await fetch(`/api/${section}/search?q=${encodeURIComponent(searchQuery)}`);
 		if (response.ok) {
 			const data: SearchResult[] = await response.json();
 			searchResults.set(data);
@@ -45,8 +46,8 @@
 					<li><a href="/thoughts">Thoughts</a></li>
 					<li><a href="/poetry">Poetry</a></li>
 					<li><a href="/projects">Projects</a></li>
-					<li><a href="/experiments">Experiments</a></li>
 					<li><a href="/services">Services</a></li>
+					<li><a href="/experiments">Experiments</a></li>
 				</ul>
 			</div>
 			<a class="link-primary text-xl" href="/">silentsilas</a>
@@ -76,8 +77,8 @@
 				<li><a href="/thoughts">Thoughts</a></li>
 				<li><a href="/poetry">Poetry</a></li>
 				<li><a href="/projects">Projects</a></li>
-				<li><a href="/experiments">Experiments</a></li>
 				<li><a href="/services">Services</a></li>
+				<li><a href="/experiments">Experiments</a></li>
 			</ul>
 		</div>
 	</div>

@@ -6,6 +6,7 @@ tags:
   - Neuroscience
   - Wisdom
 title: Judge Judy
+layout: poetry
 ---
 
 With each passing moment,

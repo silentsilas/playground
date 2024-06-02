@@ -2,7 +2,7 @@ import type { Metadata } from '$lib/utils/index.js';
 
 export async function load({ params }) {
 	const post = await import(`../../../../posts/poetry/${params.slug}.md`);
-	const { title, date, categories } = post.metadata as Metadata;
+	const { title, date, categories, draft } = post.metadata as Metadata;
 	const Content = post.default;
 	const parsedDate = new Date(date.slice(0, date.length - 6));
 	const validDate = `${
@@ -14,6 +14,7 @@ export async function load({ params }) {
 		title,
 		date: validDate,
 		categories,
-		post
+		post,
+		draft
 	};
 }

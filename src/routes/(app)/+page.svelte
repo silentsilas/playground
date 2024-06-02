@@ -45,6 +45,7 @@
 
 	onMount(() => {
 		visible = true;
+		searchResults.set([]);
 		const interval = setInterval(getRandomGreeting, 3000);
 		return () => clearInterval(interval);
 	});

@@ -7,6 +7,7 @@ tags:
   - Worry
   - Self-conscious
 title: Morning Commute
+layout: poetry
 ---
 
 A few minutes into my morning commute

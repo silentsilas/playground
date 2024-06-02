@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import { searchResults } from '$lib/store';
 	import type { SearchResult } from '$lib/utils/search';
+	import { onMount } from 'svelte';
 	import type { PageData } from '../poetry/$types';
 	export let data: PageData;
 
@@ -36,6 +37,10 @@
 		total = newData.total;
 		totalPages = Math.ceil(total / limit);
 	}
+
+	onMount(() => {
+		searchResults.set([]);
+	});
 
 	function navigate(page: number) {
 		fetchData(page);
