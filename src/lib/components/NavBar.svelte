@@ -19,7 +19,7 @@
 
 <div class="flex flex-col h-screen">
 	<div class="navbar bg-base-300 sticky top-0 z-50">
-		<div class="navbar-start">
+		<div class="flex-1 pr-2">
 			<div class="dropdown">
 				<div tabindex="-1" class="btn btn-ghost text-primary lg:hidden">
 					<svg
@@ -49,12 +49,12 @@
 			</div>
 			<a class="link-primary text-xl" href="/">silentsilas</a>
 		</div>
-		<div class="navbar-end lg:hidden">
+		<div class="lg:hidden flex-none gap-2">
 			<div class="form-control">
 				<input
 					type="text"
 					placeholder="Search"
-					class="input input-bordered md:w-auto"
+					class="input input-bordered w-24 md:w-auto"
 					bind:value={searchQuery}
 					on:input={handleSearch}
 				/>

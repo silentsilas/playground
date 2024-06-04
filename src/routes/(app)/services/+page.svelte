@@ -49,7 +49,7 @@
 </script>
 
 {#if results.length <= 0}
-	<div class="container mx-auto flex flex-col items-center">
+	<div class="container mx-auto flex flex-col items-center px-4">
 		<div class="prose">
 			<h1 class="py-6 pt-10">Services</h1>
 			<p>
