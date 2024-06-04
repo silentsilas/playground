@@ -1,9 +1,9 @@
 // src/lib/initModel.ts
-import('@tensorflow/tfjs');
+// import('@tensorflow/tfjs-node');
 import type { UniversalSentenceEncoder } from '@tensorflow-models/universal-sentence-encoder';
 import * as use from '@tensorflow-models/universal-sentence-encoder';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// import * as tf from '@tensorflow/tfjs-node';
+import * as tf from '@tensorflow/tfjs-node';
 
 export type Embedding = {
 	id: string;
