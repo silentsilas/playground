@@ -1,37 +1,60 @@
 <script lang="ts">
 	import MenuItem from '$lib/components/scenes/app/MenuItem.svelte';
-	import type { PageData } from './$types';
-	export let data: PageData;
+	import App from '$lib/components/scenes/app/App.svelte';
+	import CanvasContainer from '$lib/components/scenes/app/CanvasContainer.svelte';
+	import '../../app.css';
 
-	const xMin = -2.5,
-		xMax = 2.5;
-	const yMin = -7.5,
-		yMax = 7.5;
-	const zMin = -2.5,
-		zMax = 2.5;
+	import type { SearchResult } from '$lib/utils/search';
+	import { searchResults } from '$lib/store';
 
-	const calculatePositions = (numPosts: number): Array<[number, number, number]> => {
-		const positions: Array<[number, number, number]> = [];
-		const numRows = Math.ceil(Math.sqrt(numPosts));
-		const numCols = Math.ceil(numPosts / numRows);
+	let results: SearchResult[] = [];
 
-		for (let i = 0; i < numPosts; i++) {
-			const row = Math.floor(i / numCols);
-			const col = i % numCols;
+	searchResults.subscribe((value: SearchResult[]) => {
+		results = value ? value : [];
+	});
 
-			const x = xMin + (xMax - xMin) * (col / (numCols - 1));
-			const y = yMin + (yMax - yMin) * (row / (numRows - 1));
-			const z = zMin;
-
-			positions.push([x, y, z]);
-		}
-
-		return positions;
+	type Project = {
+		title: string;
+		path: string;
+		position: [number, number, number];
 	};
 
-	const positions = calculatePositions(data.posts.length);
+	const projects: Project[] = [
+		{
+			title: 'Visions',
+			path: 'https://visions.silentsilas.com',
+			position: [0, -4, 0]
+		},
+		{
+			title: 'Animation Editor',
+			path: '/editor',
+			position: [0, 4, 0]
+		}
+	];
 </script>
 
-{#each data.posts as post, i}
-	<MenuItem position={positions[i]} htmlContent={post.meta.title} href={post.path} />
-{/each}
+{#if results.length <= 0}
+	<CanvasContainer>
+		<App>
+			{#each projects as project, i}
+				<MenuItem position={project.position} htmlContent={project.title} href={project.path} />
+			{/each}
+		</App>
+	</CanvasContainer>
+{/if}
+
+<style>
+	:global(body) {
+		margin: 0;
+	}
+
+	.canvas {
+		width: 100%;
+		height: 100%;
+		background: rgb(0, 36, 6);
+		background: linear-gradient(180deg, rgba(0, 36, 6, 1) 0%, rgba(0, 0, 0, 1) 100%);
+		position: absolute;
+		justify-content: center;
+		align-items: center;
+	}
+</style>

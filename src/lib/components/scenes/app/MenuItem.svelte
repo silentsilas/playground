@@ -17,6 +17,8 @@
 			clickHandler();
 		}
 	};
+
+	const isExternal = href.startsWith('http');
 </script>
 
 <HTML position.x={position[0]} position.y={position[1]} position.z={position[2]}>
@@ -33,6 +35,7 @@
 			isPointerDown = false;
 			isHovering = false;
 		}}
+		target={isExternal ? '_blank' : ''}
 		on:click={onClick}
 		class="bg-green-700 px-3 py-3 text-white opacity-50 hover:opacity-90 active:opacity-100"
 		style="transform: translate(-50%, 50%); display: block;"

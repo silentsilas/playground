@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { T, useTask, useThrelte } from '@threlte/core';
 	import { World } from '@threlte/rapier';
-	import { Inspector } from 'three-inspect';
 	import { dev } from '$app/environment';
 	import SpaceSkysphere from './SpaceSkysphere.svelte';
 	import { Group, type Object3DEventMap } from 'three';
@@ -35,7 +34,3 @@
 		<slot />
 	</T.Group>
 </World>
-
-{#if false}
-	<Inspector />
-{/if}

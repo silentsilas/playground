@@ -36,3 +36,13 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Generate Embeddings
+
+To create vector embeddings for searching through Markdown posts, simply run:
+
+```
+npm run generate-embeddings
+```
+
+It will traverse through every `*.md` under `src/posts/poetry` and generate the embeddings. You would then place the `embeddings.json` in the `src/lib/utils/poetry` to let the site run semantic search queries against them.
