@@ -85,6 +85,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>silentsilas - Projects</title>
+</svelte:head>
+
 {#if results.length <= 0}
 	<CanvasContainer>
 		<World>

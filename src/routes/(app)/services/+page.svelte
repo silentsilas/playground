@@ -48,6 +48,10 @@
 	];
 </script>
 
+<svelte:head>
+	<title>silentsilas - Services</title>
+</svelte:head>
+
 {#if results.length <= 0}
 	<div class="container mx-auto flex flex-col items-center px-4">
 		<div class="prose">

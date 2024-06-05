@@ -17,6 +17,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>silentsilas - {title}</title>
+</svelte:head>
+
 {#if results.length <= 0}
 	<div class="container mx-auto flex flex-col items-center prose px-4">
 		<h1 class="pt-10">{title}</h1>

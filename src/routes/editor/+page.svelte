@@ -2,6 +2,10 @@
 	import Editor from '$lib/components/scenes/editor/Editor.svelte';
 </script>
 
+<svelte:head>
+	<title>silentsilas - Editor</title>
+</svelte:head>
+
 <div>
 	<Editor />
 </div>

@@ -68,6 +68,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>silentsilas - Home</title>
+</svelte:head>
+
 {#if results.length <= 0}
 	<div class="mx-auto container flex flex-col flex-1 my-4">
 		<div class="my-4 text-center" style="height: 60px">
@@ -102,8 +106,8 @@
 			</p>
 			<p>
 				I tend to start a lot of <a href="/projects" class="link-primary">projects</a>, but I'm
-				trying to finish more. I also like to toy with weird web technologies and will host the
-				<a href="/experiments" class="link-primary">experiments</a> here.
+				trying to finish more. It will also host any weird web experiments that I think others might
+				find interesting.
 			</p>
 			<p>
 				I self-host a lot of <a href="/services" class="link-primary">services</a> I find useful. None

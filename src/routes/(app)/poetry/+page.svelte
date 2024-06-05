@@ -48,6 +48,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>silentsilas - Poetry</title>
+</svelte:head>
+
 {#if results.length <= 0}
 	<div class="container mx-auto flex flex-col items-center">
 		<div class="prose mb-4">
