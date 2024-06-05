@@ -31,7 +31,7 @@
 			source: 'https://github.com/silentsilas/visions',
 			position: [0, -4, 0],
 			description:
-				'An experiment with vector math for a rudimentary simulation of gravity. You can change the strength of the gravity in the Controls menu.'
+				'An experiment with 3D vector math for a rudimentary simulation of gravity. You can change the strength of the gravity in the Controls menu.'
 		},
 		{
 			title: 'Animation Editor',
