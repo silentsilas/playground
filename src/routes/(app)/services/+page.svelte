@@ -19,7 +19,7 @@
 			title: 'PrivateBin',
 			url: 'https://bin.silentsilas.com',
 			description:
-				"A pastebin service, useful for sending quick text snippets or sharing sensitive data with Burn After Reading. It doesn't require an account, but I do log the IP addresses of visitors for security purposes. None of the data entered is stored on the server itself; it is E2E-encrypted and contained in URLs it generates."
+				"A pastebin service, useful for sending quick text snippets or sharing sensitive data with Burn After Reading. It doesn't require an account, but I do log the IP addresses of visitors for security purposes. None of the data entered is stored on the server itself; it is E2E-encrypted and contained in the URLs it generates. Anyone with the link can access the data, however, so be sure to send it to them securely, enable Burn After Reading, or share only nonsensitive data."
 		},
 		{
 			title: 'FreshRSS',
@@ -35,7 +35,7 @@
 		},
 		{
 			title: 'Gitea',
-			url: 'https://git.silentsilas.com',
+			url: 'https://git.silentsilas.com/silentsilas/',
 			description:
 				"A self-hosted Git service that I use to host my personal projects. I can provision an account for you if you'd like to host your own projects."
 		},
@@ -43,7 +43,7 @@
 			title: 'Jellyfin',
 			url: 'https://jellyfin.silentsilas.com',
 			description:
-				"A self-hosted media server that I use to stream movies, shows, and music to my devices. It may or may not be available, as it's dependent on the availability of my home PC or may temporarily be accessible on my home network."
+				"A self-hosted media server that I use to stream movies, shows, and music to my devices. It may or may not be available, as it's dependent on the availability of my home PC or may temporarily be accessible only on my home network."
 		}
 	];
 </script>
@@ -62,7 +62,7 @@
 				{#each selfhostedServices as service}
 					<li>
 						<h3>
-							<a class="link" href={service.url} target="_blank">
+							<a class="link-primary" href={service.url} target="_blank">
 								{service.title}
 							</a>
 						</h3>

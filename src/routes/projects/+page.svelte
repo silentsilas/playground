@@ -64,7 +64,7 @@
 			source: 'https://git.silentsilas.com/silentsilas/audio-visualizer',
 			position: [4, 4, 4],
 			description:
-				'An audiovisual exhibit of a poem by the same name. I recorded myself reciting the poem, and parsed a subtitle track to sync it with the audio.'
+				'An audiovisual exhibit of a poem by the same name. I recorded myself reciting the poem, and parsed a subtitle track to sync it with the audio. Objects in the scene are reactive to the audio as well.'
 		},
 		{
 			title: 'Sure Dog',
