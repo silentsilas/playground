@@ -69,8 +69,8 @@
 </script>
 
 {#if results.length <= 0}
-	<div class="container mx-auto flex flex-col justify-center items-center flex-1 my-4">
-		<div class="justify-center items-center text-center mb-4">
+	<div class="mx-auto container flex flex-col flex-1 my-4">
+		<div class="my-4 text-center" style="height: 60px">
 			{#if visible && currentGreeting}
 				<div transition:fade={{ duration: 1200 }}>
 					<span class="font-bold text-primary">{currentGreeting.greeting}</span>
@@ -83,7 +83,7 @@
 				</p>
 			{/if}
 		</div>
-		<div class="text-center prose px-4">
+		<div class="prose p-4" style="align-self: center">
 			<p>
 				The name's Silas. I write code for a living, and sometimes for fun. I use <a
 					href="https://elixir-lang.org/"
@@ -110,7 +110,7 @@
 				of them run any analytics or log your activity, but the software/servers may be outdated, so
 				use at your own risk.
 			</p>
-			<p>Shalom.</p>
+			<p class="text-center">Shalom.</p>
 		</div>
 	</div>
 {/if}

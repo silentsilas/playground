@@ -23,7 +23,6 @@
 	}
 
 	.canvas {
-		margin-top: 69px;
-		margin-bottom: 53px;
+		max-width: 100vw;
 	}
 </style>

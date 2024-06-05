@@ -66,20 +66,20 @@
 				</li>
 			{/each}
 		</ul>
+		{#if total > 1}
+			<nav class="join justify-end py-10">
+				<button
+					class="join-item btn-primary btn btn-outline"
+					on:click={() => navigate(currentPage - 1)}
+					disabled={currentPage === 1}>Prev</button
+				>
+				<div class="join-item content-center px-10">{currentPage} of {totalPages}</div>
+				<button
+					class="join-item btn btn-primary btn-outline"
+					on:click={() => navigate(currentPage + 1)}
+					disabled={currentPage === totalPages}>Next</button
+				>
+			</nav>
+		{/if}
 	</div>
-	{#if total > 1}
-		<nav class="join justify-end py-10">
-			<button
-				class="join-item btn-primary btn btn-outline"
-				on:click={() => navigate(currentPage - 1)}
-				disabled={currentPage === 1}>Prev</button
-			>
-			<div class="join-item content-center px-10">{currentPage} of {totalPages}</div>
-			<button
-				class="join-item btn btn-primary btn-outline"
-				on:click={() => navigate(currentPage + 1)}
-				disabled={currentPage === totalPages}>Next</button
-			>
-		</nav>
-	{/if}
 {/if}

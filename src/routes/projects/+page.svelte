@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MenuItem from '$lib/components/scenes/app/MenuItem.svelte';
-	import App from '$lib/components/scenes/app/App.svelte';
+	import World from '$lib/components/scenes/app/World.svelte';
 	import CanvasContainer from '$lib/components/scenes/app/CanvasContainer.svelte';
 	import '../../app.css';
 
@@ -87,7 +87,7 @@
 
 {#if results.length <= 0}
 	<CanvasContainer>
-		<App>
+		<World>
 			{#each projects as project, i}
 				<MenuItem
 					clickHandler={() => handleMenuClick(i)}
@@ -95,7 +95,7 @@
 					active={i === selected}>{project.title}</MenuItem
 				>
 			{/each}
-		</App>
+		</World>
 	</CanvasContainer>
 	{#if open}
 		<Overlay>

@@ -2,12 +2,10 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
 	import SearchResults from '$lib/components/SearchResults.svelte';
+	import AppContainer from '$lib/components/scenes/app/AppContainer.svelte';
 </script>
 
-<div class="flex items-center flex-1 overflow-auto">
-	<NavBar>
-		<slot />
-		<SearchResults />
-	</NavBar>
-	<Footer />
-</div>
+<AppContainer>
+	<slot />
+	<SearchResults />
+</AppContainer>

@@ -1,6 +1,4 @@
-<footer
-	class="footer footer-center p-4 bg-base-300 text-base-content absolute bottom-0 z-50 border-t border-primary"
->
+<footer class="footer footer-center p-4 bg-base-300 text-base-content border-t border-primary">
 	<aside>
 		<p>
 			Built with 💚 by <a
