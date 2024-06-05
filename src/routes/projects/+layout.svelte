@@ -4,8 +4,10 @@
 	import SearchResults from '$lib/components/SearchResults.svelte';
 </script>
 
-<NavBar>
-	<slot />
-	<SearchResults />
-</NavBar>
-<Footer />
+<div class="flex items-center flex-1 overflow-auto">
+	<NavBar>
+		<slot />
+		<SearchResults />
+	</NavBar>
+	<Footer />
+</div>

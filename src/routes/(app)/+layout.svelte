@@ -6,7 +6,10 @@
 </script>
 
 <NavBar>
-	<div class="flex flex-col items-center flex-1 overflow-auto py-4">
+	<div
+		class="flex flex-col items-center flex-1 overflow-auto"
+		style="margin-top: 69px; margin-bottom: 53px"
+	>
 		<slot />
 		<SearchResults />
 	</div>

@@ -69,8 +69,8 @@
 </script>
 
 {#if results.length <= 0}
-	<div class="container mx-auto flex flex-col justify-center items-center flex-1">
-		<div class="justify-center items-center text-center m-10">
+	<div class="container mx-auto flex flex-col justify-center items-center flex-1 my-4">
+		<div class="justify-center items-center text-center mb-4">
 			{#if visible && currentGreeting}
 				<div transition:fade={{ duration: 1200 }}>
 					<span class="font-bold text-primary">{currentGreeting.greeting}</span>
@@ -78,7 +78,7 @@
 						<span class="text-gray-500">( {currentGreeting.romanisation} )</span>
 					{/if}
 				</div>
-				<p class="mt-2 text-gray-300" transition:fade={{ delay: 400, duration: 400 }}>
+				<p class="text-gray-300" transition:fade={{ delay: 400, duration: 400 }}>
 					That's {currentGreeting.language} for hello!
 				</p>
 			{/if}

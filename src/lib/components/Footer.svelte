@@ -1,5 +1,5 @@
 <footer
-	class="footer footer-center p-4 bg-base-300 text-base-content sticky bottom-0 z-50 border-t border-primary"
+	class="footer footer-center p-4 bg-base-300 text-base-content absolute bottom-0 z-50 border-t border-primary"
 >
 	<aside>
 		<p>

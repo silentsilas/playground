@@ -50,7 +50,7 @@
 
 {#if results.length <= 0}
 	<div class="container mx-auto flex flex-col items-center">
-		<div class="prose">
+		<div class="prose mb-4">
 			<h1 class="py-6">Poetry</h1>
 		</div>
 

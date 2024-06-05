@@ -51,7 +51,7 @@
 {#if results.length <= 0}
 	<div class="container mx-auto flex flex-col items-center px-4">
 		<div class="prose">
-			<h1 class="py-6 pt-10">Services</h1>
+			<h1 class="pt-6 text-center">Services</h1>
 			<p>
 				I self-host a lot of services I find useful, and to rely less on third-party cloud services.
 				None of them run any analytics or log your activity, but the software/servers may be

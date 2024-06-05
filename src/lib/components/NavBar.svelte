@@ -17,8 +17,8 @@
 	}
 </script>
 
-<div class="flex flex-col h-screen">
-	<div class="navbar bg-base-300 sticky top-0 z-50 border-b border-primary">
+<div class="flex flex-col h-screen w-screen">
+	<div class="navbar bg-base-300 absolute top-0 z-50 border-b border-primary">
 		<div class="flex-1 pr-2">
 			<div class="dropdown">
 				<div tabindex="-1" class="btn btn-ghost text-primary lg:hidden">

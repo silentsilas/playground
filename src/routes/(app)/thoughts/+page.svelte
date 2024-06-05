@@ -68,7 +68,7 @@
 		</ul>
 	</div>
 	{#if total > 1}
-		<nav class="join justify-end py-10">
+		<nav class="join justify-end py-4">
 			<button
 				class="join-item btn-primary btn btn-outline"
 				on:click={() => navigate(currentPage - 1)}
