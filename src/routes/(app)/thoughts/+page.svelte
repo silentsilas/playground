@@ -58,7 +58,7 @@
 			{#each posts as post}
 				<li class="py-4">
 					<h3 class="pb-1">
-						<a class="link" href={post.path}>
+						<a class="link-primary" href={post.path}>
 							{post.meta.title}
 						</a>
 					</h3>
@@ -74,7 +74,7 @@
 				on:click={() => navigate(currentPage - 1)}
 				disabled={currentPage === 1}>Prev</button
 			>
-			<button class="join-item btn btn-outline">{currentPage} of {totalPages}</button>
+			<div class="join-item content-center px-10">{currentPage} of {totalPages}</div>
 			<button
 				class="join-item btn btn-primary btn-outline"
 				on:click={() => navigate(currentPage + 1)}

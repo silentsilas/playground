@@ -19,7 +19,7 @@
 			title: 'PrivateBin',
 			url: 'https://bin.silentsilas.com',
 			description:
-				"A pastebin service, useful for sending quick text snippets or sharing sensitive data with Burn After Reading. It doesn't require an account, but I do log the IP addresses of visitors for security purposes. None of the data entered is stored on the server thanks to E2E encryption."
+				"A pastebin service, useful for sending quick text snippets or sharing sensitive data with Burn After Reading. It doesn't require an account, but I do log the IP addresses of visitors for security purposes. None of the data entered is stored on the server itself; it is E2E-encrypted and contained in URLs it generates."
 		},
 		{
 			title: 'FreshRSS',
@@ -43,7 +43,7 @@
 			title: 'Jellyfin',
 			url: 'https://jellyfin.silentsilas.com',
 			description:
-				'A self-hosted media server that I use to stream movies, shows, and music to my devices. It may or may not be available, as its dependent on the availability of my home PC.'
+				"A self-hosted media server that I use to stream movies, shows, and music to my devices. It may or may not be available, as it's dependent on the availability of my home PC or may temporarily be accessible on my home network."
 		}
 	];
 </script>

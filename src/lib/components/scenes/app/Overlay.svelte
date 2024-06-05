@@ -1,5 +1,5 @@
-<div class="overlay container" id="overlay">
-	<slot name="overlay" />
+<div class="overlay container prose bg-base-300/80 border border-primary" id="overlay">
+	<slot />
 </div>
 
 <style>
@@ -10,8 +10,5 @@
 		transform: translate(-50%, -50%);
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		background: rgba(16, 56, 30, 0.9);
 	}
 </style>

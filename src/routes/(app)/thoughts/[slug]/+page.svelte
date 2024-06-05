@@ -21,6 +21,6 @@
 	<div class="container mx-auto flex flex-col items-center prose px-4">
 		<h1 class="pt-10">{title}</h1>
 		<Content />
-		<a href="/thoughts" class="link py-10">Back to Thoughts</a>
+		<a href="/thoughts" class="link-primary py-10">Back to Thoughts</a>
 	</div>
 {/if}

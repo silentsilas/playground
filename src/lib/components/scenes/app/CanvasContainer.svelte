@@ -1,9 +1,13 @@
 <!-- src/lib/CanvasLayout.svelte -->
 <script lang="ts">
 	import { Canvas } from '@threlte/core';
+
+	function preventRightClick(event: MouseEvent) {
+		event.preventDefault();
+	}
 </script>
 
-<div class="canvas">
+<div class="canvas" on:contextmenu|preventDefault={preventRightClick} role="application">
 	<Canvas>
 		<slot />
 	</Canvas>

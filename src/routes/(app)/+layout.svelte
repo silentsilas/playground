@@ -2,6 +2,7 @@
 	import '../../app.css';
 	import SearchResults from '$lib/components/SearchResults.svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <NavBar>
@@ -9,4 +10,8 @@
 		<slot />
 		<SearchResults />
 	</div>
+
+	<slot name="footer">
+		<Footer />
+	</slot>
 </NavBar>

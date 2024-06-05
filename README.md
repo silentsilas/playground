@@ -35,8 +35,6 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
 ## Generate Embeddings
 
 To create vector embeddings for searching through Markdown posts, simply run:
@@ -46,3 +44,9 @@ npm run generate-embeddings
 ```
 
 It will traverse through every `*.md` under `src/posts/poetry` and generate the embeddings. You would then place the `embeddings.json` in the `src/lib/utils/poetry` to let the site run semantic search queries against them.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE.md). This means that you can do pretty much anything you want with this code as long as you include the original copyright and license notice in your project.
+
+Content contained in the `src/posts` folder is under the [CC BY-NC-SA-4.0](/src/posts/LICENSE.md) license. You're free to modify/distribute the posts contained in the `src/posts` folder so long as it's not for commercial purposes, you give attribution, and point out any modifications you've made.

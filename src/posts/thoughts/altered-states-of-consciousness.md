@@ -9,7 +9,7 @@ year: 2019
 layout: thoughts
 ---
 
-I've been obsessed with neuroscience as of late. What follows are just a few points I found remarkable in my reading of <a href="https://mitpress.mit.edu/books/altered-states-consciousness">Altered States of Consciousness - Experiences Out of Time and Self</a> by Marc Wittmann.
+I've been obsessed with neuroscience as of late. What follows are just a few points I found remarkable in my reading of <a href="https://mitpress.mit.edu/books/altered-states-consciousness" target="_blank" class="link-primary">Altered States of Consciousness - Experiences Out of Time and Self</a> by Marc Wittmann.
 
 In a life or death situation, it's quite blurry whether people truly experience time in slow motion, or if they only remember their emotionally-charged event that way. It's a difficult phenomenon to replicate in a laboratory setting for obvious reasons. Witmann's theory, however, is that precisely this "perception of bodily processes is connected to time consciousness". Their mind is fully-engaged and recording every detail of these precious moments. [p.11]
 
@@ -34,7 +34,7 @@ Together, all three influence how the others are perceived. [p.48]
 
 The "experienced moment" is best illustrated by the time it takes for the mind to switch perspective of the "necker cube" optical illusion.
 
-Whittmann also presents a good bit of evidence that mindfulness meditation gives rise to time expansion, along with improved working memory. The theory is that if you are more aware of the moment, you remember more of your experienced moments, and thusly subjective time expands. [p.55] Most notably, experienced meditators can hold a perspective of the Necker Cube for longer, and were found to <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4294119/">feel that the past few weeks/months passed more slowly compared to a control group</a>.
+Whittmann also presents a good bit of evidence that mindfulness meditation gives rise to time expansion, along with improved working memory. The theory is that if you are more aware of the moment, you remember more of your experienced moments, and thusly subjective time expands. [p.55] Most notably, experienced meditators can hold a perspective of the Necker Cube for longer, and were found to <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4294119/" target="_blank" class="link-primary">feel that the past few weeks/months passed more slowly compared to a control group</a>.
 
 The mystical experience of "Timelessness" might perhaps be the experience of pure _urimpression_, untouched by preconceptions. Neither protention nor retention remains. No guide for the past or future. The self dissipates. [p.72]
 
