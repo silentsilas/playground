@@ -95,7 +95,7 @@
 					class="link-primary">Elixir</a
 				>
 				at my day job, and recently have been messing around with
-				<a href="https://elixir-lang.org/" target="_blank" class="link-primary">Rust</a>,
+				<a href="https://www.rust-lang.org/" target="_blank" class="link-primary">Rust</a>,
 				<a href="https://kit.svelte.dev/" target="_blank" class="link-primary">Svelte</a>, and
 				<a href="https://threejs.org/" target="_blank" class="link-primary">three.js</a>
 			</p>
@@ -106,8 +106,8 @@
 			</p>
 			<p>
 				I tend to start a lot of <a href="/projects" class="link-primary">projects</a>, but I'm
-				trying to finish more. It will also host any weird web experiments that I think others might
-				find interesting.
+				trying to finish more. This will also host any weird web experiments that I think others
+				might find interesting.
 			</p>
 			<p>
 				I self-host a lot of <a href="/services" class="link-primary">services</a> I find useful. None
