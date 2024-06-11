@@ -1,7 +1,6 @@
 export interface Metadata {
 	title: string;
 	date: string;
-	content: string;
 	categories?: string[];
 	draft?: boolean;
 }
@@ -9,18 +8,25 @@ export interface Metadata {
 export interface Section {
 	poetry: 'poetry';
 	thoughts: 'thoughts';
-	projects: 'projects';
+	services: 'services';
+	all: 'all';
 }
 
 type SectionKey = keyof Section;
 
 export interface Post {
 	meta: Metadata;
-	path: string;
+	content: string;
+	section: string;
+	filename: string;
+	id: string;
 }
 
 interface Data {
 	metadata: Metadata;
+	default: {
+		render: () => { html: string };
+	};
 }
 
 function isData(obj: unknown): obj is Data {
@@ -39,20 +45,19 @@ function isData(obj: unknown): obj is Data {
 
 export const fetchMarkdownPosts = async (
 	section: SectionKey,
-	limit: number,
-	offset: number
+	limit?: number,
+	offset?: number
 ): Promise<{ posts: Post[]; total: number }> => {
 	let posts: Record<string, () => Promise<unknown>>;
 	switch (section) {
+		case 'all':
+			posts = import.meta.glob('/src/posts/**/*.md');
+			break;
 		case 'poetry':
 			posts = import.meta.glob('/src/posts/poetry/*.md');
 			break;
-		case 'projects':
-			posts = import.meta.glob('/src/routes/(app)/projects/posts/*.md');
-			break;
 		case 'thoughts':
 			posts = import.meta.glob('/src/posts/thoughts/*.md');
-			console.log(posts);
 			break;
 		default:
 			throw new Error('Could not find this section');
@@ -70,10 +75,18 @@ export const fetchMarkdownPosts = async (
 						return undefined;
 					}
 					const { metadata } = data;
-					const postPath = path.slice(11, -3);
+					const { html } = data.default.render();
+					// remove html tags
+					const content = html.replace(/<[^>]*>/g, '');
+					const section = path.split('/')[3];
+					const filename = path.split('/').pop()?.slice(0, -3);
+
 					return {
 						meta: { ...metadata },
-						path: postPath
+						content,
+						section,
+						filename,
+						id: data.metadata.title
 					};
 				} else {
 					console.error('Could not properly parse this post');
@@ -93,6 +106,10 @@ export const fetchMarkdownPosts = async (
 		.sort(
 			(b, a) => new Date(a?.meta.date || '').getTime() - new Date(b?.meta.date || '').getTime()
 		);
+
+	if (limit === undefined || offset === undefined) {
+		return { posts: sortedPosts, total: allPosts.length };
+	}
 
 	const paginatedPosts = sortedPosts.slice(offset, offset + limit);
 

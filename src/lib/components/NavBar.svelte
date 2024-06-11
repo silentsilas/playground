@@ -2,18 +2,22 @@
 	import type { SearchResult } from '$lib/utils/search';
 	import { searchResults } from '$lib/store';
 
-	let searchQuery = '';
+	let timer: NodeJS.Timeout | undefined;
 
-	async function handleSearch() {
-		// const section = window.location.pathname.split('/')[1];
-		const response = await fetch(`/api/poetry/search?q=${encodeURIComponent(searchQuery)}`);
-		if (response.ok) {
-			const data: SearchResult[] = await response.json();
-			searchResults.set(data);
-		} else {
-			console.error('Failed to fetch search results');
-			searchResults.set([]);
-		}
+	async function handleSearch({ target }: Event) {
+		const { value } = target as HTMLInputElement;
+		clearTimeout(timer);
+		timer = setTimeout(async () => {
+			// const section = window.location.pathname.split('/')[1];
+			const response = await fetch(`/api/search?q=${encodeURIComponent(value)}`);
+			if (response.ok) {
+				const data: SearchResult[] = await response.json();
+				searchResults.set(data);
+			} else {
+				console.error('Failed to fetch search results');
+				searchResults.set([]);
+			}
+		}, 300);
 	}
 </script>
 
@@ -54,20 +58,13 @@
 				type="text"
 				placeholder="Search"
 				class="input w-24 md:w-auto"
-				bind:value={searchQuery}
-				on:input={handleSearch}
+				on:keyup={handleSearch}
 			/>
 		</div>
 	</div>
 	<div class="navbar-end hidden lg:flex">
 		<div class="form-control">
-			<input
-				type="text"
-				placeholder="Search"
-				class="input md:w-auto"
-				bind:value={searchQuery}
-				on:input={handleSearch}
-			/>
+			<input type="text" placeholder="Search" class="input md:w-auto" on:keyup={handleSearch} />
 		</div>
 		<ul class="menu menu-horizontal px-1">
 			<li><a href="/thoughts" class="link-primary">Thoughts</a></li>

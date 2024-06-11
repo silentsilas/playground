@@ -35,6 +35,6 @@ It will traverse through every `*.md` under `src/posts/poetry` and generate the 
 
 ## License
 
-This project is licensed under the [MIT License](src/branch/main/LICENSE.md). This means that you can do pretty much anything you want with this code as long as you include the original copyright and license notice in your project.
+This project is licensed under the [MIT License](src/branch/main/LICENSE). This means that you can do pretty much anything you want with this code as long as you include the original copyright and license notice in your project.
 
-Content contained in the `src/posts` folder is under the [CC BY-NC-SA-4.0](src/branch/main/src/posts/LICENSE.md) license. You're free to modify/distribute the posts contained in the `src/posts` folder so long as it's not for commercial purposes, you give attribution, and point out any modifications you've made.
+Content contained in the `src/posts` folder is under the [CC BY-NC-SA-4.0](src/branch/main/src/posts/LICENSE) license. You're free to modify/distribute the posts contained in the `src/posts` folder so long as it's not for commercial purposes, you give attribution, and point out any modifications you've made.

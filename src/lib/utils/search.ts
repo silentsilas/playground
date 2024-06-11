@@ -8,10 +8,12 @@ import * as tf from '@tensorflow/tfjs-node';
 export type Embedding = {
 	id: string;
 	vector: number[];
+	section: string;
+	filename: string;
 };
 
 export type SearchResult = {
-	poem: Embedding;
+	post: Embedding;
 	similarity: number;
 };
 

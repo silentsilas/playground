@@ -52,6 +52,7 @@
     "@threlte/core": "^7.3.0",
     "@threlte/extras": "^8.11.2",
     "@threlte/rapier": "^2.0.0",
+    "fuse.js": "^7.0.0",
     "marked": "^12.0.2",
     "mdsvex": "^0.11.0",
     "three": "^0.159.0"
