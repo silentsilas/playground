@@ -62,7 +62,7 @@
 			{#each posts as post}
 				<li class="py-4">
 					<h3 class="pb-1">
-						<a class="link-primary" href={post.path}>
+						<a class="link-primary" href={`/thoughts/${post.filename}`}>
 							{post.meta.title}
 						</a>
 					</h3>
