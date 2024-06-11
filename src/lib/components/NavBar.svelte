@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { SearchResult } from '$lib/utils/search';
 	import { searchResults } from '$lib/store';
+	import ToggleTheme from './ToggleTheme.svelte';
 
 	let timer: NodeJS.Timeout | undefined;
 
@@ -53,6 +54,7 @@
 		<a class="link-primary text-xl" href="/">silentsilas</a>
 	</div>
 	<div class="lg:hidden flex-none gap-2">
+		<ToggleTheme />
 		<div class="form-control">
 			<input
 				type="text"
@@ -66,6 +68,7 @@
 		<div class="form-control">
 			<input type="text" placeholder="Search" class="input md:w-auto" on:keyup={handleSearch} />
 		</div>
+		<ToggleTheme />
 		<ul class="menu menu-horizontal px-1">
 			<li><a href="/thoughts" class="link-primary">Thoughts</a></li>
 			<li><a href="/poetry" class="link-primary">Poetry</a></li>

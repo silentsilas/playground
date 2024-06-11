@@ -23,4 +23,13 @@
 	}
 </script>
 
-<button on:click={toggleTheme}>Toggle Theme</button>
+<div class="flex items-center gap-2 pl-6 pr-2">
+	☀️
+	<input
+		type="checkbox"
+		class="toggle toggle-primary toggle-sm"
+		on:click={toggleTheme}
+		checked={theme === 'forest'}
+	/>
+	🌛
+</div>

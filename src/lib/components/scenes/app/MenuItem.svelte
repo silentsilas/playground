@@ -32,7 +32,7 @@
 			isHovering = false;
 		}}
 		on:click={onClick}
-		class="bg-base-300 border border-primary px-3 py-3 text-white md:opacity-50 hover:opacity-90 active:opacity-100"
+		class="bg-base-300 border border-primary px-3 py-3 text-primary md:opacity-50 hover:opacity-90 active:opacity-100"
 		style="transform: translate(-50%, 50%); display: block; width: 170px;"
 	>
 		<slot />
