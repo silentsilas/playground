@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import * as tf from '@tensorflow/tfjs-node';
 import postEmbeddings from '$lib/utils/poetry/embeddings.json';
-import { json } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
 import { getModel, type Embedding, type SearchResult } from '$lib/utils/search';
 import { fetchMarkdownPosts } from '$lib/utils';
 import Fuse from 'fuse.js';
@@ -9,8 +9,8 @@ import Fuse from 'fuse.js';
 // Search handler
 export const GET = async ({ url }: { url: URL }) => {
 	const searchQuery = url.searchParams.get('q');
-	if (!searchQuery) {
-		return { status: 400, body: { error: 'Query parameter "q" is required' } };
+	if (!searchQuery || searchQuery === ' ') {
+		return error(400, 'Empty query');
 	}
 
 	try {
@@ -75,8 +75,8 @@ export const GET = async ({ url }: { url: URL }) => {
 			.slice(0, 10);
 
 		return json(semanticResults);
-	} catch (error) {
-		return { status: 500, body: { error: (error as Error).message } };
+	} catch (err) {
+		return error(500, (err as Error).message);
 	}
 };
 

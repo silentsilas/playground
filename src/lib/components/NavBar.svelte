@@ -9,7 +9,10 @@
 		const { value } = target as HTMLInputElement;
 		clearTimeout(timer);
 		timer = setTimeout(async () => {
-			// const section = window.location.pathname.split('/')[1];
+			if (!value) {
+				searchResults.set([]);
+				return;
+			}
 			const response = await fetch(`/api/search?q=${encodeURIComponent(value)}`);
 			if (response.ok) {
 				const data: SearchResult[] = await response.json();

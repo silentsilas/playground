@@ -79,10 +79,10 @@
 				<div transition:fade={{ duration: 1200 }}>
 					<span class="font-bold text-primary">{currentGreeting.greeting}</span>
 					{#if currentGreeting.romanisation}
-						<span class="text-gray-500">( {currentGreeting.romanisation} )</span>
+						<span>( {currentGreeting.romanisation} )</span>
 					{/if}
 				</div>
-				<p class="text-gray-300" transition:fade={{ delay: 400, duration: 400 }}>
+				<p transition:fade={{ delay: 400, duration: 400 }}>
 					That's {currentGreeting.language} for hello!
 				</p>
 			{/if}

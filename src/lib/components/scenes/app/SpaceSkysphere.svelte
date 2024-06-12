@@ -2,6 +2,7 @@
 	import { T } from '@threlte/core';
 	export let size = 100;
 	export let count = 500;
+	export let color = localStorage.getItem('theme') === 'forest' ? 'white' : '#a991f7';
 
 	const positions = new Float32Array(count * 3);
 
@@ -26,5 +27,5 @@
 			}}
 		/>
 	</T.BufferGeometry>
-	<T.PointsMaterial size={0.1} />
+	<T.PointsMaterial size={0.1} {color} />
 </T.Points>
