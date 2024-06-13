@@ -8,7 +8,6 @@ export interface Metadata {
 export interface Section {
 	poetry: 'poetry';
 	thoughts: 'thoughts';
-	services: 'services';
 	all: 'all';
 }
 
