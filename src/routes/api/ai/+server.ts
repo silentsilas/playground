@@ -20,7 +20,7 @@ export async function POST({ request, locals }: RequestEvent): Promise<Response>
 	if (dev) {
 		ebookPath = join(process.cwd(), 'static', 'book.epub');
 	} else {
-		ebookPath = join(process.cwd(), 'build', 'book.epub');
+		ebookPath = join(process.cwd(), 'client', 'book.epub');
 	}
 
 	const loader = new EPubLoader(ebookPath);
@@ -33,7 +33,8 @@ export async function POST({ request, locals }: RequestEvent): Promise<Response>
 		anthropicApiKey: process.env.ANTHROPIC_API_KEY,
 	});
 
-	const SYSTEM_TEMPLATE = `Use the following pieces of context to answer the question at the end.
+	const SYSTEM_TEMPLATE = `Use the following pieces of context to respond to your visitor at the end.
+You are a tea guru, and the context is a book about tea. You will be asked questions about the book, or about tea in general.
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
 Always format your response in markdown.
 

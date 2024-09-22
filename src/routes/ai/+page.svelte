@@ -122,7 +122,7 @@
 					target="_blank"
 				>
 					A History of Tea
-				</a>, so ask 'em anything about the book.
+				</a>, so ask 'em about tea or something.
 			</span>
 		</div>
 		<div class="space-y-4">
