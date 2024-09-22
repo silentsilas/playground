@@ -34,13 +34,12 @@
 				'An experiment with 3D vector math for a rudimentary simulation of gravity. You can change the strength of the gravity in the Controls menu.'
 		},
 		{
-			title: 'Animation Editor',
-			path: '/editor',
-			source:
-				'https://git.silentsilas.com/silentsilas/playground/src/branch/main/src/routes/editor',
+			title: 'Tea Guru',
+			path: '/ai',
+			source: 'https://git.silentsilas.com/silentsilas/playground/src/branch/main/src/routes/ai',
 			position: [4, -2, -4],
 			description:
-				'A 3D animation editor via Theatre.js. This is used internally by me for other ThreeJS projects.'
+				'A chatbot trained on an in-depth book about tea. Ask it about anything related to tea!'
 		},
 		{
 			title: 'Headbang',

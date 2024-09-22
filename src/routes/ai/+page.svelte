@@ -1,11 +1,10 @@
 <script lang="ts">
 	import '../../app.css';
 	import type { SearchResult } from '$lib/utils/search';
-	import { searchResults } from '$lib/store';
+	import { searchResults, type ChatHistory } from '$lib/store';
 	import { onMount } from 'svelte';
 	import { marked } from 'marked';
 	import { HumanMessage, AIMessage } from '@langchain/core/messages';
-	import type { ChatHistory } from '../api/ai/+server';
 	import { PUBLIC_LOAD_DUMMY_HISTORY } from '$env/static/public';
 
 	let searchResultsValue: SearchResult[] = [];
@@ -86,6 +85,22 @@
 			loading = false;
 		}
 	}
+
+	async function handleNewSession() {
+		try {
+			const response = await fetch('/api/ai/new-session', { method: 'POST' });
+			if (response.ok) {
+				const historyResponse = await fetch('/api/ai');
+				const data = await historyResponse.json();
+				chatHistory = data.chatHistory || [];
+				query = '';
+			} else {
+				console.error('Failed to start new session');
+			}
+		} catch (error) {
+			console.error('Error starting new session:', error);
+		}
+	}
 </script>
 
 <svelte:head>
@@ -93,13 +108,29 @@
 </svelte:head>
 
 {#if searchResultsValue.length === 0}
-	<div class="flex-grow flex-col overflow-auto p-4">
+	<div class="flex-grow flex-col overflow-auto p-4 my-2 bg-base-200">
+		<div class="flex flex-col items-center gap-4">
+			<div class="avatar">
+				<div class="ring-primary ring-offset-base-100 w-64 rounded-full ring ring-offset-2">
+					<img src="/imgs/ai/profile.jpg" alt="Portrait of an orange tabby cat reading a book" />
+				</div>
+			</div>
+			<span>
+				This lil guy just finished reading <a
+					class="link link-primary"
+					href="https://bookshop.org/p/books/a-history-of-tea-the-life-and-times-of-the-world-s-favorite-beverage-laura-c-martin/11044690"
+					target="_blank"
+				>
+					A History of Tea
+				</a>, so ask 'em anything about the book.
+			</span>
+		</div>
 		<div class="space-y-4">
 			{#each chatHistory as message}
 				{@const { role, content } = getRoleAndContent(message)}
 				{#if role === 'human'}
 					<div class="chat chat-end">
-						<div class="chat-bubble chat-bubble-primary">
+						<div class="chat-bubble chat-bubble-primary prose">
 							{@html renderMarkdown(content)}
 						</div>
 					</div>
@@ -112,29 +143,28 @@
 		</div>
 
 		{#if loading}
-			<div class="mt-4">
+			<div class="mt-4 flex flex-col items-center justify-center">
 				<span class="loading loading-dots loading-lg"></span>
+				<span>This may take a minute; streaming is still a work in progress.</span>
 			</div>
 		{/if}
 		<form on:submit|preventDefault={handleSubmit} class="mt-4 flex-col">
 			<label class="form-control">
-				<div class="label">
-					<span class="label-text">
-						Querying the Authenticator <a
-							href="https://git.silentsilas.com/silentsilas/Authenticator"
-							target="_blank"
-							class="link-primary">repository</a
-						>
-					</span>
-				</div>
 				<textarea
 					bind:value={query}
 					class="textarea textarea-bordered h-24"
 					placeholder="Type your message here..."
 				></textarea>
 			</label>
-			<button type="submit" class="btn btn-block btn-primary mt-2" disabled={loading}>
+			<button type="submit" class="btn btn-block btn-primary mt-4" disabled={loading}>
 				Send
+			</button>
+			<button
+				type="button"
+				class="btn btn-block btn-error btn-outline mt-2"
+				on:click={handleNewSession}
+			>
+				New Session
 			</button>
 		</form>
 	</div>

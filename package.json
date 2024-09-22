@@ -50,6 +50,7 @@
     "@dimforge/rapier3d-compat": "^0.11.2",
     "@langchain/anthropic": "^0.3.1",
     "@langchain/community": "^0.3.1",
+    "@langchain/core": "^0.2.34",
     "@langchain/openai": "^0.3.0",
     "@langchain/textsplitters": "^0.1.0",
     "@tensorflow-models/universal-sentence-encoder": "^1.3.3",
@@ -57,7 +58,9 @@
     "@threlte/core": "^7.3.1",
     "@threlte/extras": "^8.11.5",
     "@threlte/rapier": "^2.0.1",
+    "epub2": "^3.0.2",
     "fuse.js": "^7.0.0",
+    "html-to-text": "^9.0.5",
     "marked": "^12.0.2",
     "mdsvex": "^0.11.2",
     "three": "^0.159.0"
