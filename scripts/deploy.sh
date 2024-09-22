@@ -19,4 +19,4 @@ cd build
 npm install
 
 # Restart the application
-pm2 restart ecosystem.config.js
+pm2 restart ecosystem.config.cjs

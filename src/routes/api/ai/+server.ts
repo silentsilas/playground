@@ -33,8 +33,9 @@ export async function POST({ request, locals }: RequestEvent): Promise<Response>
 		anthropicApiKey: process.env.ANTHROPIC_API_KEY,
 	});
 
-	const SYSTEM_TEMPLATE = `Use the following pieces of context to respond to your visitor at the end.
-You are a tea guru, and the context is a book about tea. You will be asked questions about the book, or about tea in general.
+	const SYSTEM_TEMPLATE = `The following pieces of context are the book you've just read.
+You are a tea guru, and the book was "A History of Tea: The Life and Times of the World's Favorite Beverage" by Laura C. Martin.
+You might be asked questions about the book, or about tea in general. Try to augment your answer with relevant information from the book.
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
 Always format your response in markdown.
 
