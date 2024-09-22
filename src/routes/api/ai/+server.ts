@@ -8,6 +8,7 @@ import type { RequestEvent } from '@sveltejs/kit';
 import { EPubLoader } from "@langchain/community/document_loaders/fs/epub";
 import { join } from 'path';
 import { getChatHistory, setChatHistory } from '$lib/store';
+import { dev } from '$app/environment';
 
 export async function POST({ request, locals }: RequestEvent): Promise<Response> {
 	const { query } = await request.json();
@@ -15,8 +16,14 @@ export async function POST({ request, locals }: RequestEvent): Promise<Response>
 
 	const chatHistory = getChatHistory(sessionId);
 
-	const directory = join(process.cwd(), 'static/book.epub');
-	const loader = new EPubLoader(directory);
+	let ebookPath;
+	if (dev) {
+		ebookPath = join(process.cwd(), 'static', 'book.epub');
+	} else {
+		ebookPath = join(process.cwd(), 'build', 'book.epub');
+	}
+
+	const loader = new EPubLoader(ebookPath);
 	const docs = await loader.load();
 
 	const context = docs.map(doc => doc.pageContent).join('\n\n');
