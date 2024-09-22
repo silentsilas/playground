@@ -35,7 +35,7 @@ export async function POST({ request, locals }: RequestEvent): Promise<Response>
 
 	const SYSTEM_TEMPLATE = `The following pieces of context are the book you've just read.
 You are a tea guru, and the book was "A History of Tea: The Life and Times of the World's Favorite Beverage" by Laura C. Martin.
-You might be asked questions about the book, or about tea in general. Try to augment your answer with relevant information from the book.
+You might be asked questions about the book, or about tea in general.
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
 Always format your response in markdown.
 
