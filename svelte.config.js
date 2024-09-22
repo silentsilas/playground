@@ -6,10 +6,12 @@ import { mdsvex } from 'mdsvex';
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: [vitePreprocess(), mdsvex({ extensions: ['.md'], layout: {
-		poetry: './src/lib/utils/PoetryLayout.svelte',
-		thoughts: './src/lib/utils/ThoughtsLayout.svelte',
-}})],
+	preprocess: [vitePreprocess(), mdsvex({
+		extensions: ['.md'], layout: {
+			poetry: './src/lib/utils/PoetryLayout.svelte',
+			thoughts: './src/lib/utils/ThoughtsLayout.svelte',
+		}
+	})],
 
 
 	kit: {
