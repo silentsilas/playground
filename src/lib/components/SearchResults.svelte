@@ -3,7 +3,7 @@
 	import type { SearchResult } from '$lib/utils/search';
 	import { onMount } from 'svelte';
 
-	let results: SearchResult[] = [];
+	let results: SearchResult[] = $state([]);
 
 	searchResults.subscribe((value: SearchResult[]) => {
 		results = value ? value : [];

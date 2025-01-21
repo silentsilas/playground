@@ -2,13 +2,24 @@
 	import { HTML } from '@threlte/extras';
 	import { Attractor } from '@threlte/rapier';
 
-	export let position: [number, number, number] = [0, 0, 0];
-	export let range: number = 100;
-	export let clickHandler: (() => void) | undefined = undefined;
-	export let active: boolean = false;
+	interface Props {
+		position?: [number, number, number];
+		range?: number;
+		clickHandler?: (() => void) | undefined;
+		active?: boolean;
+		children?: import('svelte').Snippet;
+	}
 
-	let isHovering = false;
-	let isPointerDown = false;
+	let {
+		position = [0, 0, 0],
+		range = 100,
+		clickHandler = undefined,
+		active = false,
+		children
+	}: Props = $props();
+
+	let isHovering = $state(false);
+	let isPointerDown = $state(false);
 
 	const onClick = () => {
 		if (clickHandler) {
@@ -20,22 +31,22 @@
 <HTML position.x={position[0]} position.y={position[1]} position.z={position[2]}>
 	<button
 		type="button"
-		on:pointerenter={() => (isHovering = true)}
-		on:pointerleave={() => {
+		onpointerenter={() => (isHovering = true)}
+		onpointerleave={() => {
 			isPointerDown = false;
 			isHovering = false;
 		}}
-		on:pointerdown={() => (isPointerDown = true)}
-		on:pointerup={() => (isPointerDown = false)}
-		on:pointercancel={() => {
+		onpointerdown={() => (isPointerDown = true)}
+		onpointerup={() => (isPointerDown = false)}
+		onpointercancel={() => {
 			isPointerDown = false;
 			isHovering = false;
 		}}
-		on:click={onClick}
+		onclick={onClick}
 		class="bg-base-300 border border-primary px-3 py-3 text-primary md:opacity-50 hover:opacity-90 active:opacity-100"
 		style="transform: translate(-50%, 50%); display: block; width: 170px;"
 	>
-		<slot />
+		{@render children?.()}
 	</button>
 </HTML>
 

@@ -6,10 +6,10 @@
 	import spinnersJson from '$lib/components/scenes/editor/SpinnersState.json';
 	import { type IProjectConfig } from '@theatre/core';
 
-	let sequence: SequenceController;
+	let sequence: SequenceController = $state();
 
-	let ball: Mesh;
-	let spotlight: SpotLight;
+	let ball: Mesh = $state();
+	let spotlight: SpotLight = $state();
 	let lastBallPosition = new Vector3();
 	let currentBallPosition = new Vector3();
 	let config = spinnersJson as IProjectConfig;
@@ -33,16 +33,18 @@
 		<!-- create a T.SpotLight that looks at box-->
 		<T.SpotLight position={[0, 5, 3]} intensity={10} bind:ref={spotlight}></T.SpotLight>
 
-		<SheetObject key="Box" let:Transform let:Sync on:change={ballMoved}>
-			<Transform>
-				<T.Mesh position.y={0.5} bind:ref={ball}>
-					<T.SphereGeometry args={[1, 8, 4]} />
-					<T.MeshStandardMaterial color="#b00d03">
-						<Sync color roughness metalness />
-					</T.MeshStandardMaterial>
-				</T.Mesh>
-			</Transform>
-		</SheetObject>
+		<SheetObject key="Box"   on:change={ballMoved}>
+			{#snippet children({ Transform, Sync })}
+						<Transform>
+					<T.Mesh position.y={0.5} bind:ref={ball}>
+						<T.SphereGeometry args={[1, 8, 4]} />
+						<T.MeshStandardMaterial color="#b00d03">
+							<Sync color roughness metalness />
+						</T.MeshStandardMaterial>
+					</T.Mesh>
+				</Transform>
+								{/snippet}
+				</SheetObject>
 		<Sequence iterationCount={Infinity} direction="alternate" autoplay rate={1} bind:sequence />
 	</Sheet>
 </Project>

@@ -1,6 +1,11 @@
-<script>
+<script lang="ts">
 	import Footer from '$lib/components/Footer.svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 <div
@@ -10,7 +15,7 @@
 	<NavBar></NavBar>
 
 	<div class="flex flex-1 overflow-auto">
-		<slot />
+		{@render children?.()}
 	</div>
 
 	<Footer></Footer>

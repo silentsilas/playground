@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	import { T } from '@threlte/core';
 	import { Attractor, Collider, RigidBody } from '@threlte/rapier';
 	import { MeshBasicMaterial, SphereGeometry } from 'three';

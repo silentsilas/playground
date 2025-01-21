@@ -4,7 +4,7 @@
 	import { searchResults } from '$lib/store';
 	import type { SearchResult } from '$lib/utils/search';
 
-	let results: SearchResult[] = [];
+	let results: SearchResult[] = $state([]);
 
 	searchResults.subscribe((value: SearchResult[]) => {
 		results = value ? value : [];
@@ -40,8 +40,8 @@
 
 	let greetings = [...GREETINGS];
 
-	let currentGreeting: Greeting = { greeting: 'Hello', language: 'English' };
-	let visible = false;
+	let currentGreeting: Greeting = $state({ greeting: 'Hello', language: 'English' });
+	let visible = $state(false);
 
 	onMount(() => {
 		visible = true;

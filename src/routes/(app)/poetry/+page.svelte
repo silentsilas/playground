@@ -1,13 +1,19 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { searchResults } from '$lib/store';
 	import type { SearchResult } from '$lib/utils/search';
 	import { onMount } from 'svelte';
 	import type { PageData } from '../poetry/$types';
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	let results: SearchResult[] = [];
+	let { data }: Props = $props();
+
+	let results: SearchResult[] = $state([]);
 
 	searchResults.subscribe((value: SearchResult[]) => {
 		results = value ? value : [];
@@ -21,13 +27,15 @@
 		});
 	};
 
-	let { posts, total } = data;
+	let { posts, total } = $state(data);
 	const limit = 8;
 
-	let currentPage = Number($page.url.searchParams.get('page')) || 1;
-	let totalPages = Math.ceil(total / limit);
-	$: $page.url.searchParams.get('page'),
-		(currentPage = Number($page.url.searchParams.get('page')) || 1);
+	let currentPage = $state(Number($page.url.searchParams.get('page')) || 1);
+	let totalPages = $state(Math.ceil(total / limit));
+	run(() => {
+		$page.url.searchParams.get('page'),
+			(currentPage = Number($page.url.searchParams.get('page')) || 1);
+	});
 
 	async function fetchData(page: number) {
 		const response = await fetch(`/api/poetry?limit=${limit}&page=${page}`);
@@ -73,13 +81,13 @@
 		<nav class="join justify-end py-10">
 			<button
 				class="join-item btn-primary btn btn-outline"
-				on:click={() => navigate(currentPage - 1)}
+				onclick={() => navigate(currentPage - 1)}
 				disabled={currentPage === 1}>Prev</button
 			>
 			<div class="join-item content-center px-10">{currentPage} of {totalPages}</div>
 			<button
 				class="join-item btn btn-primary btn-outline"
-				on:click={() => navigate(currentPage + 1)}
+				onclick={() => navigate(currentPage + 1)}
 				disabled={currentPage === totalPages}>Next</button
 			>
 		</nav>

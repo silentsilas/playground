@@ -1,6 +1,13 @@
 <!-- src/lib/CanvasLayout.svelte -->
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import { Canvas } from '@threlte/core';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	function preventRightClick(event: MouseEvent) {
 		event.preventDefault();
@@ -9,11 +16,11 @@
 
 <div
 	class="canvas flex flex-1"
-	on:contextmenu|preventDefault={preventRightClick}
+	oncontextmenu={preventDefault(preventRightClick)}
 	role="application"
 >
 	<Canvas>
-		<slot />
+		{@render children?.()}
 	</Canvas>
 </div>
 

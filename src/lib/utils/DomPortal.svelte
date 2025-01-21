@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
 	import { tick } from 'svelte';
 
 	/**
@@ -51,13 +51,17 @@
 </script>
 
 <script>
+	
 	/**
-	 * DOM Element or CSS Selector
-	 * @type { HTMLElement|string}
+	 * @typedef {Object} Props
+	 * @property { HTMLElement|string} [target] - DOM Element or CSS Selector
+	 * @property {import('svelte').Snippet} [children]
 	 */
-	export let target = 'body';
+
+	/** @type {Props} */
+	let { target = 'body', children } = $props();
 </script>
 
 <div use:portal={target} hidden style="display: contents;">
-	<slot />
+	{@render children?.()}
 </div>

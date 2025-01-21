@@ -2,13 +2,17 @@
 	import { fade } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 
-	export let message: string;
-	export let type: 'info' | 'success' | 'warning' | 'error' = 'info';
-	export let duration: number = 3000;
+	interface Props {
+		message: string;
+		type?: 'info' | 'success' | 'warning' | 'error';
+		duration?: number;
+	}
+
+	let { message, type = 'info', duration = 3000 }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
-	let visible = true;
+	let visible = $state(true);
 
 	setTimeout(() => {
 		visible = false;

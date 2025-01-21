@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Reactive variable to store the current theme
-	let theme = 'forest'; // default theme
+	let theme = $state('forest'); // default theme
 
 	// On component mount, check for saved theme in local storage
 	import { onMount } from 'svelte';
@@ -28,7 +28,7 @@
 	<input
 		type="checkbox"
 		class="toggle toggle-primary toggle-sm"
-		on:click={toggleTheme}
+		onclick={toggleTheme}
 		checked={theme === 'forest'}
 	/>
 	🌛

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import '../../app.css';
 	import type { SearchResult } from '$lib/utils/search';
 	import { searchResults, type ChatHistory } from '$lib/store';
@@ -8,11 +10,11 @@
 	import { PUBLIC_LOAD_DUMMY_HISTORY } from '$env/static/public';
 	import Toast from '$lib/components/Toast.svelte';
 
-	let searchResultsValue: SearchResult[] = [];
-	let query = '';
-	let loading = false;
-	let showToast = false;
-	let toastMessage = '';
+	let searchResultsValue: SearchResult[] = $state([]);
+	let query = $state('');
+	let loading = $state(false);
+	let showToast = $state(false);
+	let toastMessage = $state('');
 
 	type Questions = {
 		[key: string]: string[];
@@ -68,7 +70,7 @@
 		];
 	}
 
-	let chatHistory: ChatHistory = [];
+	let chatHistory: ChatHistory = $state([]);
 
 	onMount(async () => {
 		try {
@@ -207,7 +209,7 @@
 				<span>This may take a minute; streaming is still a work in progress.</span>
 			</div>
 		{/if}
-		<form on:submit|preventDefault={handleSubmit} class="mt-4 flex-col">
+		<form onsubmit={preventDefault(handleSubmit)} class="mt-4 flex-col">
 			<label class="form-control">
 				<textarea
 					bind:value={query}
@@ -221,7 +223,7 @@
 			<button
 				type="button"
 				class="btn btn-block btn-error btn-outline mt-2"
-				on:click={handleNewSession}
+				onclick={handleNewSession}
 			>
 				New Session
 			</button>
@@ -241,7 +243,7 @@
 										<button
 											type="button"
 											class="btn btn-sm btn-outline"
-											on:click={() => copyToClipboard(item)}
+											onclick={() => copyToClipboard(item)}
 											title="Copy to clipboard"
 										>
 											<svg

@@ -1,3 +1,5 @@
+import { render } from 'svelte/server';
+
 export interface Metadata {
 	title: string;
 	date: string;
@@ -21,11 +23,10 @@ export interface Post {
 	id: string;
 }
 
+// Update the Data interface to match the new structure
 interface Data {
 	metadata: Metadata;
-	default: {
-		render: () => { html: string };
-	};
+	default: any; // The component itself
 }
 
 function isData(obj: unknown): obj is Data {
@@ -74,8 +75,8 @@ export const fetchMarkdownPosts = async (
 						return undefined;
 					}
 					const { metadata } = data;
-					const { html } = data.default.render();
-					// remove html tags
+					// Use the new render function from svelte/server
+					const { html } = render(data.default, {});
 					const content = html.replace(/<[^>]*>/g, '');
 					const section = path.split('/')[3];
 					const filename = path.split('/').pop()?.slice(0, -3);

@@ -8,9 +8,9 @@
 	import { searchResults } from '$lib/store';
 	import Overlay from '$lib/components/scenes/app/Overlay.svelte';
 
-	let results: SearchResult[] = [];
-	let open = false;
-	let selected = -1;
+	let results: SearchResult[] = $state([]);
+	let open = $state(false);
+	let selected = $state(-1);
 
 	searchResults.subscribe((value: SearchResult[]) => {
 		results = value ? value : [];
@@ -105,7 +105,7 @@
 			<button
 				type="button"
 				class="close-button p-4 m-4 btn btn-outline"
-				on:click={() => {
+				onclick={() => {
 					open = false;
 					selected = -1;
 				}}>X</button

@@ -6,9 +6,14 @@
 	import { Group, type Object3DEventMap } from 'three';
 	import DollyCam from './DollyCam.svelte';
 	import Planet from '$lib/components/scenes/app/Planet.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	const { invalidate } = useThrelte();
-	let spaceObjects: Group<Object3DEventMap>;
+	let spaceObjects: Group<Object3DEventMap> = $state();
 
 	useTask(
 		'updateSpaceObjects',
@@ -31,6 +36,6 @@
 
 		<Planet />
 
-		<slot />
+		{@render children?.()}
 	</T.Group>
 </World>

@@ -63,13 +63,13 @@
 				type="text"
 				placeholder="Search"
 				class="input w-24 md:w-auto"
-				on:keyup={handleSearch}
+				onkeyup={handleSearch}
 			/>
 		</div>
 	</div>
 	<div class="navbar-end hidden lg:flex">
 		<div class="form-control">
-			<input type="text" placeholder="Search" class="input md:w-auto" on:keyup={handleSearch} />
+			<input type="text" placeholder="Search" class="input md:w-auto" onkeyup={handleSearch} />
 		</div>
 		<ToggleTheme />
 		<ul class="menu menu-horizontal px-1">

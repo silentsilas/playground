@@ -1,5 +1,13 @@
+<script lang="ts">
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
+</script>
+
 <div class="overlay container prose bg-base-300/80 border border-primary" id="overlay">
-	<slot />
+	{@render children?.()}
 </div>
 
 <style>

@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
-	export let size = 100;
-	export let count = 500;
-	export let color = localStorage.getItem('theme') === 'forest' ? 'white' : '#a991f7';
+	interface Props {
+		size?: number;
+		count?: number;
+		color?: any;
+	}
 
-	const positions = new Float32Array(count * 3);
+	let { size = 100, count = 500, color = localStorage.getItem('theme') === 'forest' ? 'white' : '#a991f7' }: Props = $props();
+
+	const positions = $state(new Float32Array(count * 3));
 
 	// randomly distribute points in a cube
 	for (let i = 0; i < count; i++) {

@@ -3,11 +3,15 @@
 	import type { SearchResult } from '$lib/utils/search';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const { title, date: _date, Content, categories: _ } = data;
 
-	let results: SearchResult[] = [];
+	let results: SearchResult[] = $state([]);
 
 	searchResults.subscribe((value: SearchResult[]) => {
 		results = value ? value : [];
