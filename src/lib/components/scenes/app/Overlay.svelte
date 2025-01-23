@@ -18,6 +18,6 @@
 		transform: translate(-50%, -50%);
 		display: flex;
 		flex-direction: column;
-		z-index: 100;
+		z-index: 1000000000;
 	}
 </style>

@@ -7,7 +7,7 @@
 	let camLookatPosition: Vector3 = new Vector3();
 	let camCurrentPosition: Vector3 = new Vector3();
 	let camDamping: number = 1;
-	let camera: PerspectiveCamera = $state();
+	let camera: PerspectiveCamera | undefined = $state();
 
 	const handleMouseMove = (event: MouseEvent) => {
 		// normalize the mouse position to [-1, 1], and smoothly interpolate the camera's lookAt position

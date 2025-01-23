@@ -21,7 +21,7 @@
 				console.error('Failed to fetch search results');
 				searchResults.set([]);
 			}
-		}, 300);
+		}, 700);
 	}
 </script>
 
@@ -59,12 +59,7 @@
 	<div class="lg:hidden flex-none gap-2">
 		<ToggleTheme />
 		<div class="form-control">
-			<input
-				type="text"
-				placeholder="Search"
-				class="input w-24 md:w-auto"
-				onkeyup={handleSearch}
-			/>
+			<input type="text" placeholder="Search" class="input w-24 md:w-auto" onkeyup={handleSearch} />
 		</div>
 	</div>
 	<div class="navbar-end hidden lg:flex">

@@ -1,26 +1,22 @@
 import { writable } from 'svelte/store';
 import type { SearchResult } from './utils/search';
-import type { HumanMessage, AIMessage, SystemMessage } from '@langchain/core/messages';
+import { goto } from '$app/navigation';
 
-const initArray: SearchResult[] = [];
-export const searchResults = writable(initArray);
+function createSearchStore() {
+	const { subscribe, set } = writable<SearchResult[]>([]);
 
-export type ChatHistory = (HumanMessage | AIMessage | SystemMessage)[];
-
-const chatHistories: Record<string, ChatHistory> = {};
-
-export const chatStore = writable(chatHistories);
-
-export function getChatHistory(sessionId: string): ChatHistory {
-	return chatHistories[sessionId] || [];
+	return {
+		subscribe,
+		set: (results: SearchResult[]) => {
+			set(results);
+			if (results.length > 0) {
+				goto('/search');
+			}
+		},
+		clear: () => {
+			set([]);
+		}
+	};
 }
 
-export function setChatHistory(sessionId: string, history: ChatHistory): void {
-	chatHistories[sessionId] = history;
-	chatStore.set(chatHistories);
-}
-
-export function clearChatHistory(sessionId: string): void {
-	chatHistories[sessionId] = [];
-	chatStore.set(chatHistories);
-}
+export const searchResults = createSearchStore();

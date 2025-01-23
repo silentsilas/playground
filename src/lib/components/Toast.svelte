@@ -1,27 +1,23 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { createEventDispatcher } from 'svelte';
-
 	interface Props {
 		message: string;
 		type?: 'info' | 'success' | 'warning' | 'error';
 		duration?: number;
+		onClose?: () => void;
 	}
 
-	let { message, type = 'info', duration = 3000 }: Props = $props();
-
-	const dispatch = createEventDispatcher();
+	let { message, type = 'info', duration = 3000, onClose }: Props = $props();
 
 	let visible = $state(true);
 
 	setTimeout(() => {
 		visible = false;
-		dispatch('close');
+		onClose?.();
 	}, duration);
 </script>
 
 {#if visible}
-	<div class="toast toast-center z-50" transition:fade>
+	<div class="toast toast-center z-50">
 		<div class="alert alert-{type}">
 			<span>{message}</span>
 		</div>

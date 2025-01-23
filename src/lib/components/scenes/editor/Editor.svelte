@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
 	import { Canvas } from '@threlte/core';
-	import Spinners from '$lib/components/scenes/editor/Spinners.svelte';
-	import { Studio } from '@threlte/theatre';
+	import Scene from '$lib/components/scenes/editor/Scene.svelte';
 </script>
 
-<Studio enabled={dev} />
-
 <Canvas>
-	<Spinners />
+	{#if import.meta.env.MODE === 'development'}
+		{#await import('@threlte/studio') then { Studio }}
+			<Studio>
+				<Scene />
+			</Studio>
+		{/await}
+	{:else}
+		<Scene />
+	{/if}
 </Canvas>

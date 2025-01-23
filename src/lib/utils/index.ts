@@ -23,10 +23,10 @@ export interface Post {
 	id: string;
 }
 
-// Update the Data interface to match the new structure
 interface Data {
 	metadata: Metadata;
-	default: any; // The component itself
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	default: any;
 }
 
 function isData(obj: unknown): obj is Data {
@@ -75,9 +75,8 @@ export const fetchMarkdownPosts = async (
 						return undefined;
 					}
 					const { metadata } = data;
-					// Use the new render function from svelte/server
-					const { html } = render(data.default, {});
-					const content = html.replace(/<[^>]*>/g, '');
+					const { body } = render(data.default, {});
+					const content = body.replace(/<[^>]*>/g, '');
 					const section = path.split('/')[3];
 					const filename = path.split('/').pop()?.slice(0, -3);
 

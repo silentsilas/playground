@@ -1,13 +1,4 @@
 <script lang="ts">
-	import type { SearchResult } from '$lib/utils/search';
-	import { searchResults } from '$lib/store';
-
-	let results: SearchResult[] = $state([]);
-
-	searchResults.subscribe((value: SearchResult[]) => {
-		results = value ? value : [];
-	});
-
 	const selfhostedServices = [
 		{
 			title: 'Nextcloud',
@@ -52,28 +43,26 @@
 	<title>silentsilas - Services</title>
 </svelte:head>
 
-{#if results.length <= 0}
-	<div class="container mx-auto flex flex-col items-center px-4">
-		<div class="prose">
-			<h1 class="pt-6 text-center">Services</h1>
-			<p>
-				I self-host a lot of services I find useful, and to rely less on third-party cloud services.
-				None of them run any analytics or log your activity, but the software/servers may be
-				outdated, so use at your own risk.
-			</p>
+<div class="container mx-auto flex flex-col items-center px-4">
+	<div class="prose">
+		<h1 class="pt-6 text-center">Services</h1>
+		<p>
+			I self-host a lot of services I find useful, and to rely less on third-party cloud services.
+			None of them run any analytics or log your activity, but the software/servers may be outdated,
+			so use at your own risk.
+		</p>
 
-			<ul>
-				{#each selfhostedServices as service}
-					<li>
-						<h3>
-							<a class="link-primary" href={service.url} target="_blank">
-								{service.title}
-							</a>
-						</h3>
-						<p class="text-sm">{service.description}</p>
-					</li>
-				{/each}
-			</ul>
-		</div>
+		<ul>
+			{#each selfhostedServices as service}
+				<li>
+					<h3>
+						<a class="link-primary" href={service.url} target="_blank">
+							{service.title}
+						</a>
+					</h3>
+					<p class="text-sm">{service.description}</p>
+				</li>
+			{/each}
+		</ul>
 	</div>
-{/if}
+</div>

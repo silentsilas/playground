@@ -3,18 +3,10 @@
 	import World from '$lib/components/scenes/app/World.svelte';
 	import CanvasContainer from '$lib/components/scenes/app/CanvasContainer.svelte';
 	import '../../app.css';
-
-	import type { SearchResult } from '$lib/utils/search';
-	import { searchResults } from '$lib/store';
 	import Overlay from '$lib/components/scenes/app/Overlay.svelte';
 
-	let results: SearchResult[] = $state([]);
 	let open = $state(false);
 	let selected = $state(-1);
-
-	searchResults.subscribe((value: SearchResult[]) => {
-		results = value ? value : [];
-	});
 
 	type Project = {
 		title: string;
@@ -34,12 +26,12 @@
 				'An experiment with 3D vector math for a rudimentary simulation of gravity. You can change the strength of the gravity in the Controls menu.'
 		},
 		{
-			title: 'Tea Guru',
+			title: 'Chatbot',
 			path: '/ai',
 			source: 'https://git.silentsilas.com/silentsilas/playground/src/branch/main/src/routes/ai',
 			position: [4, -2, -4],
 			description:
-				'A chatbot trained on an in-depth book about tea. Ask it about anything related to tea!'
+				"Bring-your-own-key Anthropic chatbot. You can change the system prompt, and the chat history is saved locally. Otherwise it's nothing too fancy."
 		},
 		{
 			title: 'Headbang',
@@ -88,55 +80,53 @@
 	<title>silentsilas - Projects</title>
 </svelte:head>
 
-{#if results.length <= 0}
-	<CanvasContainer>
-		<World>
-			{#each projects as project, i}
-				<MenuItem
-					clickHandler={() => handleMenuClick(i)}
-					position={project.position}
-					active={i === selected}>{project.title}</MenuItem
-				>
-			{/each}
-		</World>
-	</CanvasContainer>
-	{#if open}
-		<Overlay>
-			<button
-				type="button"
-				class="close-button p-4 m-4 btn btn-outline"
-				onclick={() => {
-					open = false;
-					selected = -1;
-				}}>X</button
+<CanvasContainer>
+	<World>
+		{#each projects as project, i}
+			<MenuItem
+				clickHandler={() => handleMenuClick(i)}
+				position={project.position}
+				active={i === selected}>{project.title}</MenuItem
 			>
-			<div class="p-6">
-				<h2 class="mt-0">{projects[selected].title}</h2>
-				<p>{projects[selected].description}</p>
-				<div class="flex justify-evenly">
-					{#if projects[selected].source === '#'}
-						<button class="btn btn-primary sm:btn-sm md:btn-wide" disabled
-							>Source Code Unavailable</button
-						>
-					{:else}
-						<a
-							href={projects[selected].source}
-							target={isExternal(projects[selected].source) ? '_blank' : ''}
-						>
-							<button class="btn btn-primary sm:btn-sm md:btn-wide">Source Code</button>
-						</a>
-					{/if}
-
+		{/each}
+	</World>
+</CanvasContainer>
+{#if open}
+	<Overlay>
+		<button
+			type="button"
+			class="close-button p-4 m-4 btn btn-outline"
+			onclick={() => {
+				open = false;
+				selected = -1;
+			}}>X</button
+		>
+		<div class="p-6">
+			<h2 class="mt-0">{projects[selected].title}</h2>
+			<p>{projects[selected].description}</p>
+			<div class="flex justify-evenly">
+				{#if projects[selected].source === '#'}
+					<button class="btn btn-primary sm:btn-sm md:btn-wide" disabled
+						>Source Code Unavailable</button
+					>
+				{:else}
 					<a
-						href={projects[selected].path}
-						target={isExternal(projects[selected].path) ? '_blank' : ''}
+						href={projects[selected].source}
+						target={isExternal(projects[selected].source) ? '_blank' : ''}
 					>
-						<button class="btn btn-primary sm:btn-sm md:btn-wide">Visit</button></a
-					>
-				</div>
+						<button class="btn btn-primary sm:btn-sm md:btn-wide">Source Code</button>
+					</a>
+				{/if}
+
+				<a
+					href={projects[selected].path}
+					target={isExternal(projects[selected].path) ? '_blank' : ''}
+				>
+					<button class="btn btn-primary sm:btn-sm md:btn-wide">Visit</button></a
+				>
 			</div>
-		</Overlay>
-	{/if}
+		</div>
+	</Overlay>
 {/if}
 
 <style>

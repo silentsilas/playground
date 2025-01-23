@@ -3,7 +3,7 @@
 	import type { SearchResult } from '$lib/utils/search';
 	import { onMount } from 'svelte';
 
-	let results: SearchResult[] = $state([]);
+	let results = $searchResults;
 
 	searchResults.subscribe((value: SearchResult[]) => {
 		results = value ? value : [];
@@ -21,6 +21,10 @@
 		searchResults.set([]);
 	});
 </script>
+
+<svelte:head>
+	<title>silentsilas - Search Results</title>
+</svelte:head>
 
 {#if results.length > 0}
 	<div class="container mx-auto flex flex-col items-center">
@@ -43,5 +47,11 @@
 				</li>
 			{/each}
 		</ul>
+	</div>
+{:else}
+	<div class="container mx-auto flex flex-col items-center">
+		<div class="prose">
+			<p>No results found</p>
+		</div>
 	</div>
 {/if}

@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { T } from '@threlte/core';
+	import { isInstanceOf, T } from '@threlte/core';
 	interface Props {
 		size?: number;
 		count?: number;
 		color?: any;
 	}
 
-	let { size = 100, count = 500, color = localStorage.getItem('theme') === 'forest' ? 'white' : '#a991f7' }: Props = $props();
+	let {
+		size = 100,
+		count = 500,
+		color = localStorage.getItem('theme') === 'forest' ? 'white' : '#a991f7'
+	}: Props = $props();
 
 	const positions = $state(new Float32Array(count * 3));
 
@@ -22,8 +26,10 @@
 	<T.BufferGeometry>
 		<T.BufferAttribute
 			args={[positions, 3]}
-			attach={(parent, self) => {
-				parent.setAttribute('position', self);
+			attach={({ ref, parent, parentObject3D }) => {
+				if (isInstanceOf(parent, 'BufferGeometry') && isInstanceOf(ref, 'BufferAttribute')) {
+					parent.setAttribute('position', ref);
+				}
 				return () => {
 					// cleanup function called when ref changes or the component unmounts
 					// https://threlte.xyz/docs/reference/core/t#attach

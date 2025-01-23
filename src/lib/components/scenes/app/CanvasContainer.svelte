@@ -1,8 +1,6 @@
-<!-- src/lib/CanvasLayout.svelte -->
 <script lang="ts">
-	import { preventDefault } from 'svelte/legacy';
-
 	import { Canvas } from '@threlte/core';
+	import { WebGPURenderer } from 'three/webgpu';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -14,12 +12,16 @@
 	}
 </script>
 
-<div
-	class="canvas flex flex-1"
-	oncontextmenu={preventDefault(preventRightClick)}
-	role="application"
->
-	<Canvas>
+<div class="canvas flex flex-1" oncontextmenu={preventRightClick} role="application">
+	<Canvas
+		createRenderer={(canvas) => {
+			return new WebGPURenderer({
+				canvas,
+				antialias: true,
+				forceWebGL: false
+			});
+		}}
+	>
 		{@render children?.()}
 	</Canvas>
 </div>
