@@ -49,6 +49,7 @@
 	"type": "module",
 	"dependencies": {
 		"@dimforge/rapier3d-compat": "^0.14.0",
+		"@friendofsvelte/tipex": "^0.0.7-fix-0",
 		"@langchain/anthropic": "^0.3.1",
 		"@langchain/community": "^0.3.1",
 		"@langchain/core": "^0.3.32",
