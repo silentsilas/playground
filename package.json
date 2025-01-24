@@ -17,7 +17,6 @@
 		"model-pipeline:run": "node scripts/model-pipeline.js",
 		"generate-embeddings": "node scripts/generate-embeddings.js",
 		"finetune": "node scripts/finetune.js",
-		"prestart": "npm run build",
 		"start": "node build"
 	},
 	"devDependencies": {
