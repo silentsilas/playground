@@ -17,7 +17,7 @@
 		"model-pipeline:run": "node scripts/model-pipeline.js",
 		"generate-embeddings": "node scripts/generate-embeddings.js",
 		"finetune": "node scripts/finetune.js",
-		"start": "node build"
+		"start": "PORT=8080 node build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.4",
