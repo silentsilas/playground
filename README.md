@@ -1,6 +1,6 @@
 # Playground
 
-Portfolio site of silentsilas.
+Portfolio site of silentsilas
 
 ## Developing
 
