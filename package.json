@@ -9,7 +9,6 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"deploy": "bash scripts/deploy.sh",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
@@ -17,7 +16,9 @@
 		"format": "prettier --write .",
 		"model-pipeline:run": "node scripts/model-pipeline.js",
 		"generate-embeddings": "node scripts/generate-embeddings.js",
-		"finetune": "node scripts/finetune.js"
+		"finetune": "node scripts/finetune.js",
+		"prestart": "npm run build",
+		"start": "node build"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.4",
