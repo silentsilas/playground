@@ -12,3 +12,5 @@ vite.config.ts.timestamp-*
 .vercel
 vectorstore
 ecosystem.config.js
+.ai-robots-cache.json
+robots.txt

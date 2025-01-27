@@ -20,6 +20,7 @@
 		"start": "PORT=8080 node build"
 	},
 	"devDependencies": {
+		"@silentsilas/vite-plugin-ai-robots": "^1.0.0",
 		"@sveltejs/adapter-auto": "^3.2.4",
 		"@sveltejs/adapter-node": "^5.2.2",
 		"@sveltejs/kit": "^2.16.1",
