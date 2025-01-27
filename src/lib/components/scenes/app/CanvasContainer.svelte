@@ -13,15 +13,7 @@
 </script>
 
 <div class="canvas flex flex-1" oncontextmenu={preventRightClick} role="application">
-	<Canvas
-		createRenderer={(canvas) => {
-			return new WebGPURenderer({
-				canvas,
-				antialias: true,
-				forceWebGL: false
-			});
-		}}
-	>
+	<Canvas>
 		{@render children?.()}
 	</Canvas>
 </div>
