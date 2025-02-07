@@ -13,12 +13,6 @@
 				"A pastebin service, useful for sending quick text snippets or sharing sensitive data with Burn After Reading. It doesn't require an account, but I do log the IP addresses of visitors for security purposes. None of the data entered is stored on the server itself; it is E2E-encrypted and contained in the URLs it generates. Anyone with the link can access the data, however, so be sure to send it to them securely, enable Burn After Reading, or share only nonsensitive data."
 		},
 		{
-			title: 'FreshRSS',
-			url: 'https://rss.silentsilas.com',
-			description:
-				"A self-hosted RSS reader that I use to keep up with blogs, podcasts, and news sites. I can provision an account for you if you want to try it out. You would use an RSS client on your devices and have them subscribe to your FreshRSS URL. You would then add all of the RSS feeds you'd like to follow via the FreshRSS web interface and all of your RSS clients will then pull the articles for you to read."
-		},
-		{
 			title: 'The Lounge',
 			url: 'https://irc.silentsilas.com',
 			description:

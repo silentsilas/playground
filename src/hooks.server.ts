@@ -50,7 +50,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// Add sessionId to locals for easy access in routes
 	event.locals = { ...event.locals, sessionId };
 
-	sendAnalytics(event);
+	if (import.meta.env.PROD) {
+		sendAnalytics(event);
+	}
 
 	return resolve(event);
 };
