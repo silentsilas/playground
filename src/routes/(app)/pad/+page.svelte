@@ -50,6 +50,18 @@
 		suggestions = await datamuseApi.getSuggestions(word);
 	}, 300);
 
+	async function handleSelectionChange() {
+		const selection = editor?.view.state.selection;
+		if (selection && !selection.empty) {
+			const selectedText = editor?.view.state.doc.textBetween(selection.from, selection.to, ' ');
+
+			if (selectedText) {
+				rhymes = await datamuseApi.getRhymes(selectedText);
+				updateCursorPosition();
+			}
+		}
+	}
+
 	function updateCursorPosition() {
 		const selection = window.getSelection();
 		if (!selection?.rangeCount) return;
@@ -57,8 +69,10 @@
 		const range = selection.getRangeAt(0);
 		const rect = range.getBoundingClientRect();
 
+		const x = Math.min(Math.max(rect.left + window.scrollX, 100), window.innerWidth - 100);
+
 		cursorPosition = {
-			x: rect.left + window.scrollX,
+			x,
 			y: rect.bottom + window.scrollY + 10
 		};
 	}
@@ -71,7 +85,6 @@
 		const { doc, selection } = state || {};
 
 		if (!doc || !selection) return;
-
 		const pos = selection.from;
 		const currentChar = doc.textBetween(Math.max(0, pos - 1), pos);
 
@@ -99,18 +112,8 @@
 		updateCursorPosition();
 	}
 
-	async function handleMouseUp() {
-		const selection = editor?.view.state.selection;
-		if (selection && !selection.empty) {
-			const selectedText = editor?.view.state.doc.textBetween(selection.from, selection.to, ' ');
-
-			if (selectedText) {
-				rhymes = await datamuseApi.getRhymes(selectedText);
-			}
-		} else {
-			rhymes = [];
-		}
-		updateCursorPosition();
+	async function handleMouseUp(event: MouseEvent | TouchEvent) {
+		handleSelectionChange();
 	}
 
 	async function handleMouseDown() {
@@ -158,10 +161,14 @@
 	<meta name="description" content="A text editor with rhyming and word suggestions" />
 </svelte:head>
 
+<svelte:window on:selectionchange={handleSelectionChange} />
+
 <div
-	class="container mx-auto my-8 dark relative"
+	class="container mx-auto my-8 dark relative px-4"
 	onmouseup={handleMouseUp}
+	ontouchend={handleMouseUp}
 	onmousedown={handleMouseDown}
+	ontouchstart={handleMouseDown}
 	role="textbox"
 	aria-label="Text editor container"
 	tabindex="0"
@@ -170,13 +177,13 @@
 
 	{#if suggestions.length > 0 || rhymes.length > 0}
 		<div
-			class="suggestions-container absolute"
+			class="suggestions-container"
+			role="listbox"
 			style:left="{cursorPosition.x}px"
 			style:top="{cursorPosition.y}px"
-			role="listbox"
 		>
 			{#if suggestions.length > 0}
-				<div class="bg-white dark:bg-gray-800 shadow-lg rounded-md p-2">
+				<div class="bg-white dark:bg-gray-800 shadow-lg rounded-md p-2 mb-2">
 					<h3 class="text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Suggestions</h3>
 					{#each suggestions.slice(0, 10) as { word }}
 						<button
@@ -213,8 +220,15 @@
 
 <style>
 	.suggestions-container {
+		position: absolute;
 		z-index: 1000;
-		max-width: 200px;
-		transform: translate(-50%, -25%);
+		max-width: min(300px, 90vw);
+		max-height: 30vh;
+		overflow-y: auto;
+		bottom: 1rem;
+		overscroll-behavior: contain;
+		left: var(--suggestion-x, 50%);
+		top: var(--suggestion-y, -50%);
+		transform: translate(-50%, -50%);
 	}
 </style>
