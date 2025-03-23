@@ -5,6 +5,7 @@
 	import '@friendofsvelte/tipex/styles/Controls.css';
 	import '@friendofsvelte/tipex/styles/EditLink.css';
 	import '@friendofsvelte/tipex/styles/CodeBlock.css';
+	import Utilities from './Utilities.svelte';
 
 	let { initialContent } = $props();
 
@@ -169,7 +170,11 @@
 	aria-label="Text editor container"
 	tabindex="0"
 >
-	<Tipex {body} controls !focal class="h-[80vh]" bind:tipex={editor} onupdate={handleUpdate} />
+	<Tipex {body} controls !focal class="h-[80vh]" bind:tipex={editor} onupdate={handleUpdate}>
+		{#snippet utilities(editor)}
+			<Utilities {editor} />
+		{/snippet}
+	</Tipex>
 
 	{#if suggestions.length > 0 || rhymes.length > 0}
 		<div
