@@ -15,7 +15,7 @@
 	let { initialContent } = $props();
 
 	let editor = $state<TipexEditor>();
-	let body = $state(initialContent || localStorage.getItem('tipex') || '');
+	let body = $state(localStorage.getItem('tipex') || initialContent || '');
 	let suggestions = $state<Suggestion[]>([]);
 	let rhymes = $state<Suggestion[]>([]);
 	let currentWord = $state('');
