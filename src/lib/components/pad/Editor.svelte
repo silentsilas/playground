@@ -21,7 +21,24 @@
 	let currentWord = $state('');
 	let selectedIndex = $state(-1);
 	let cursorPosition = $state({ x: 0, y: 0 });
+	let isMobile = $state(false);
 	const debounce = createDebounce();
+
+	// Check for mobile on component mount and resize
+	function checkMobile() {
+		isMobile = window.innerWidth < 768;
+	}
+
+	$effect(() => {
+		// Add resize listener for responsive behavior
+		window.addEventListener('resize', checkMobile);
+		checkMobile();
+
+		// Cleanup on unmount
+		return () => {
+			window.removeEventListener('resize', checkMobile);
+		};
+	});
 
 	$effect(() => {
 		if (editor?.getHTML()) {
@@ -49,7 +66,7 @@
 			currentWord = '';
 		}
 		updateCursorPosition();
-	}, 300);
+	}, 1000);
 
 	const handleSelectionChange = debounce(async () => {
 		const selection = editor?.view.state.selection;
@@ -62,6 +79,15 @@
 			}
 		}
 	}, 300);
+
+	// Special handler for touch events
+	function handleTouchEnd(event: TouchEvent) {
+		// Prevent default only if we have suggestions
+		if (suggestions.length > 0 || rhymes.length > 0) {
+			event.preventDefault();
+		}
+		handleSelectionChange();
+	}
 
 	function clearSuggestions() {
 		suggestions = [];
@@ -129,7 +155,7 @@
 <div
 	class="container mx-auto my-8 dark relative px-4"
 	onmouseup={handleSelectionChange}
-	ontouchend={handleSelectionChange}
+	ontouchend={handleTouchEnd}
 	onmousedown={clearSuggestions}
 	ontouchstart={clearSuggestions}
 	role="textbox"
@@ -144,7 +170,7 @@
 
 	{#if suggestions.length > 0 || rhymes.length > 0}
 		<div
-			class="suggestions-container"
+			class="suggestions-container {isMobile ? 'mobile-suggestions' : ''}"
 			role="listbox"
 			aria-label="Suggestions and rhymes"
 			style:left="{cursorPosition.x}px"
@@ -184,5 +210,30 @@
 		box-shadow:
 			0 4px 6px -1px rgb(0 0 0 / 0.1),
 			0 2px 4px -2px rgb(0 0 0 / 0.1);
+		touch-action: manipulation;
+		background-color: white;
+		border-radius: 0.375rem;
+	}
+
+	/* Mobile-specific styles */
+	.mobile-suggestions {
+		max-width: 90vw;
+		width: 90vw;
+		max-height: 200px;
+		left: 50% !important; /* Override inline styles */
+		bottom: 20px !important;
+		top: auto !important;
+		position: fixed;
+	}
+
+	@media (max-width: 768px) {
+		.suggestions-container {
+			position: fixed;
+			bottom: 20px;
+			left: 50% !important;
+			transform: translateX(-50%);
+			top: auto !important;
+			width: 90vw;
+		}
 	}
 </style>
