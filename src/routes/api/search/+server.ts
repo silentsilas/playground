@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import * as tf from '@tensorflow/tfjs-node';
-import postEmbeddings from '$lib/utils/poetry/embeddings.json';
+import postEmbeddings from '$lib/utils/embeddings.json';
 import { error, json } from '@sveltejs/kit';
 import { getModel, type Embedding, type SearchResult } from '$lib/utils/search';
 import { fetchMarkdownPosts } from '$lib/utils';
