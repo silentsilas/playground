@@ -162,7 +162,7 @@
 	aria-label="Text editor container"
 	tabindex="0"
 >
-	<Tipex {body} controls !focal class="h-[80vh]" bind:tipex={editor} onupdate={handleUpdate}>
+	<Tipex {body} controls !focal class="h-[80vh]" bind:tipex={editor}>
 		{#snippet utilities(editor)}
 			<Utilities {editor} />
 		{/snippet}
