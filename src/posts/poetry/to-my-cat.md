@@ -34,4 +34,6 @@ I still keep my door ajar.
 I know you hate it when it’s closed,
 But I don’t know where you are.
 
+<img src="/imgs/sekai.jpg" />
+
 — Sekai, 4.10.25 3:37PM EDT
