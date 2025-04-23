@@ -8,6 +8,8 @@ title: To My Cat
 layout: poetry
 ---
 
+<img src="/imgs/sekai.jpg" width="400" />
+
 All things must pass,
 But your exit was unfair.
 I still keep my water glass
@@ -34,6 +36,4 @@ I still keep my door ajar.
 I know you hate it when it’s closed,
 But I don’t know where you are.
 
-<img src="/imgs/sekai.jpg" />
-
-— Sekai, 4.10.25 3:37PM EDT
+— RIP Sekai, 4.10.25 3:37PM EDT
